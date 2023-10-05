@@ -1,8 +1,3 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-
-<script>
-
 $(document).ready(function(){
 
   // Initialize carousels
@@ -128,4 +123,3 @@ $('#scrollButton').on('click', function() {
 });
 
 });
-</script>
