@@ -171,7 +171,7 @@ button.get-started {
   height: 55px;
   background: #C9C2B8;
   border-radius: 50px;
-  border: solid #928D86 1px;
+  border: solid #B5AEA2 1px;
   justify-content: center;
   align-items: center;
   padding: 3px;
@@ -185,7 +185,7 @@ button.get-started {
   width: 50%;
   height: 86%; 
   background-color: #EBE3D8;
-  border: solid #928D86 1px;
+  border: solid #B5AEA2 1px;
   border-radius: 50px;
   transition: left 0.3s ease;
 }
