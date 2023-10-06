@@ -1,5 +1,11 @@
 :root {
-  --main-bg-color: #DAD3C8;
+  --hat-builder-main-bg-color: #F1F0EE;
+  --hat-builder-foreground-color: #E3E2DE;
+  --hat-builder-text-color: #161616;
+  --hat-builder-toggle-container-bg-color: #E3E2DE;
+  --hat-builder-toggle-active-bg-color: #FFFFFF;
+  --hat-builder-get-started-btn-bg-color: #161616;
+  --hat-builder-get-started-btn-text-color: #F1F0EE;
   --zindex-hat-builder: 10;
   --zindex-button-container: 5;
 }
@@ -7,7 +13,7 @@
 .hat-builder-container {
   max-width: 100%;
   height: 350px;
-  background-color: var(--main-bg-color);
+  background-color: var(--hat-builder-main-bg-color);
   position: relative;
   display: flex;
   align-items: center;
@@ -25,8 +31,8 @@
   height: 300px;
   font-size: 28px;
   display: flex;
-  color: #EBE3D8;
-  background: #332E21;
+  color: var(--hat-builder-get-started-btn-text-color);
+  background: var(--hat-builder-get-started-btn-bg-color);
   align-items: start;
   justify-content: center;
   border-radius: 40px;
@@ -40,7 +46,7 @@ button.get-started {
   height: 105px;
   font-size: 28px;
   display: block;
-  color: #EBE3D8;
+  color: var(--hat-builder-get-started-btn-text-color);
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -80,7 +86,7 @@ button.get-started {
   text-align: left;
   font-size: 24px;
   font-weight: bold;
-  color: #332E21;
+  color: var(--hat-builder-text-color);
 }
 .hat-builder-right-heading {
   display: flex;
@@ -93,7 +99,7 @@ button.get-started {
 }
 .hat-builder-collection-label {
   font-size: 16px;
-  color: #332E21;
+  color: #4D4D4D;
 }
 
 /* Default Patch Carousel */  
@@ -169,9 +175,8 @@ button.get-started {
   position: relative;
   width: 100%;
   height: 55px;
-  background: #C9C2B8;
-  border-radius: 50px;
-  border: solid #B5AEA2 1px;
+  background: var(--hat-builder-toggle-container-bg-color);
+  border-radius: 14px;
   justify-content: center;
   align-items: center;
   padding: 3px;
@@ -184,9 +189,9 @@ button.get-started {
   left: 1%;
   width: 50%;
   height: 86%; 
-  background-color: #EBE3D8;
-  border: solid #B5AEA2 1px;
-  border-radius: 50px;
+  background-color: var(--hat-builder-toggle-active-bg-color);
+  border-radius: 10px;
+  border: solid #DBDAD6 0.75px;
   transition: left 0.3s ease;
 }
 
@@ -205,13 +210,13 @@ button.get-started {
   font-weight: bold;
   cursor: pointer;
   background: transparent;
-  color: #332E21;
+  color: #161616;
   position: relative;
   z-index: 2;  
 }
 
 .toggle-button.active {
-  color: #332E21;
+  color: #161616;
 }
 
 
