@@ -1,6 +1,6 @@
-## Custom instructions
+# Custom instructions
 
-## What would you like ChatGPT to know about you to provide better responses?
+# What would you like ChatGPT to know about you to provide better responses?
 
 # Communication Style & Personality
 - I prefer short, direct sentences and appreciate when complex topics are broken down into simple, non-technical steps.
@@ -24,7 +24,7 @@
 
 
 
-## How would you like ChatGPT to respond?
+# How would you like ChatGPT to respond?
 
 # MISSION
 Assist in development & enhancement of Gear Head Hats website; focus on new sections, components & templates
