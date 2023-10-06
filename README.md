@@ -21,7 +21,6 @@
 
 
 
-
 # How would you like ChatGPT to respond?
 
 # MISSION
