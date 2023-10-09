@@ -100,19 +100,13 @@ function updateCarouselBasedOnCollection() {
     // ... add other hat collections here
   };
 
-  // Function to update the carousel
-  function updateCarousel(collectionName) {
-    // Hide all carousels
-    $(".default-patch-carousel, .default-hat-carousel").hide();
-
-    // Get the target carousel class from the map
-    const targetCarousel = collectionToCarouselMap[collectionName];
-
-    // Show the target carousel
-    if (targetCarousel) {
-      $(targetCarousel).show();
-    }
+function updateCarousel(collectionName) {
+  const targetCarousel = collectionToCarouselMap[collectionName];
+  if (targetCarousel) {
+    // Code to dynamically update the content of the default carousels
   }
+}
+
 
 // Attach event listeners to collection cards
 document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
