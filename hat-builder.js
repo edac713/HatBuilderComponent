@@ -81,11 +81,46 @@ function updateCarouselBasedOnCollection() {
   const collectionToCarouselMap = {
     "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-1": ".nascar-drivers-carousel",
     "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-2": ".speedways-racing-series-carousel",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-3": ".patches-ag-farming",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-4": ".patches-beer-liqour",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-5": ".patches-car-truck-brands",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-6": ".patches-racing-brands",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-7": ".patches-diesel",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-8": ".patches-drag-racing",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-9": ".patches-hunting-fishing-guns",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-10": ".patches-motorcycle-brands",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-11": ".patches-national-parks",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-12": ".patches-miscellaneous",
     // ... add other patch collections here
     "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-1": ".richardson-carousel",
     "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-2": ".imperial-carousel",
+    "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-3": ".yupoong-carousel",
+    "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-4": ".pacific-carousel",
+    "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-5": ".flexfit-carousel",
     // ... add other hat collections here
   };
+
+  // Function to update the carousel
+  function updateCarousel(collectionName) {
+    // Your code to update the carousel based on the clicked collection
+  }
+
+  // Attach event listeners to patch collection cards
+  document.querySelectorAll('.collection-list__item').forEach(function(card) {
+    card.addEventListener('click', function() {
+      const collectionName = card.getAttribute('data-collection-name');
+      updateCarousel(collectionName);
+    });
+  });
+
+  // Attach event listeners to hat collection cards
+  document.querySelectorAll('.hat-collection-list__item').forEach(function(card) {
+    card.addEventListener('click', function() {
+      const collectionName = card.getAttribute('data-collection-name');
+      updateCarousel(collectionName);
+    });
+  });
+}
 
   // Listen for clicks on collection cards
   $(".collection-list__item").on("click", function(event) {
