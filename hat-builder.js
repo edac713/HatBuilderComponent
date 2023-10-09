@@ -102,38 +102,26 @@ function updateCarouselBasedOnCollection() {
 
   // Function to update the carousel
   function updateCarousel(collectionName) {
-    // Your code to update the carousel based on the clicked collection
-  }
+    // Hide all carousels
+    $(".default-patch-carousel, .default-hat-carousel").hide();
 
-  // Attach event listeners to patch collection cards
-  document.querySelectorAll('.collection-list__item').forEach(function(card) {
-    card.addEventListener('click', function() {
-      const collectionName = card.getAttribute('data-collection-name');
-      updateCarousel(collectionName);
-    });
-  });
+    // Get the target carousel class from the map
+    const targetCarousel = collectionToCarouselMap[collectionName];
 
-  // Attach event listeners to hat collection cards
-  document.querySelectorAll('.hat-collection-list__item').forEach(function(card) {
-    card.addEventListener('click', function() {
-      const collectionName = card.getAttribute('data-collection-name');
-      updateCarousel(collectionName);
-    });
-  });
-}
-
-  // Listen for clicks on collection cards
-  $(".collection-list__item").on("click", function(event) {
-    event.preventDefault();  // Prevent default action
-    const clickedId = $(this).attr("id");
-    const targetCarousel = collectionToCarouselMap[clickedId];
+    // Show the target carousel
     if (targetCarousel) {
-      // Hide all carousels
-      $(".default-patch-carousel, .default-hat-carousel").hide();
-      // Show the target carousel
       $(targetCarousel).show();
     }
+  }
+
+// Attach event listeners to collection cards
+document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
+  card.addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent default action
+    const collectionName = card.getAttribute('data-collection-name');
+    updateCarousel(collectionName);
   });
+});
 }
   
   // Update header label based on active carousel
