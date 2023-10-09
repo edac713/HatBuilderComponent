@@ -74,7 +74,33 @@ $(document).ready(function(){
       $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').show();
     }
   }
+  
+// Dynamic Carousel Update based on Collection Card Click
+function updateCarouselBasedOnCollection() {
+  // Add your collection-to-carousel mapping here
+  const collectionToCarouselMap = {
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-1": ".nascar-drivers-carousel",
+    "Slide-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082-2": ".speedways-racing-series-carousel",
+    // ... add other patch collections here
+    "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-1": ".richardson-carousel",
+    "Slide-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6-2": ".imperial-carousel",
+    // ... add other hat collections here
+  };
 
+  // Listen for clicks on collection cards
+  $(".collection-list__item").on("click", function(event) {
+    event.preventDefault();  // Prevent default action
+    const clickedId = $(this).attr("id");
+    const targetCarousel = collectionToCarouselMap[clickedId];
+    if (targetCarousel) {
+      // Hide all carousels
+      $(".default-patch-carousel, .default-hat-carousel").hide();
+      // Show the target carousel
+      $(targetCarousel).show();
+    }
+  });
+}
+  
   // Update header label based on active carousel
   function updateHatBuilderHeader() {
     const isPatchesActive = $('#patchesToggle').hasClass('active');
@@ -119,6 +145,9 @@ $(document).ready(function(){
   }
 
   setInitialCategoryDisplay();
+  
+  // Call the function to initialize
+updateCarouselBasedOnCollection();
 
   // Scroll to hat builder container on button click
   $('#scrollButton').on('click', function() {
