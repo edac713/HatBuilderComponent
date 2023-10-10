@@ -40,6 +40,7 @@
   animation: bounce 1s infinite;
   z-index: var(--zindex-button-container);
 }
+
 button.get-started {
   position: absolute;
   width: 100%;
@@ -55,21 +56,31 @@ button.get-started {
   animation: bounce 1s infinite;
   z-index: 250;
 }
+
 .button-image {
   position: relative;
   top: 20px;
   width: 50px;
 }
+
 .button-text {
   margin-top: 10px;
   position: relative;
   font-weight: bold;
   font-family: var(--font-body-family);
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); 
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
+
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 /* Hat Builder Header */
@@ -80,29 +91,33 @@ button.get-started {
   left: 30px;
   right: 30px;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
 }
+
 .hat-builder-left-heading {
   text-align: left;
   font-size: 24px;
   font-weight: bold;
   color: var(--hat-builder-text-color);
 }
+
 .hat-builder-right-heading {
   display: flex;
   align-items: center;
 }
+
 .hat-builder-collection-icon {
   margin-right: 5px;
   width: 20px;
   height: 20px;
 }
+
 .hat-builder-collection-label {
   font-size: 16px;
   color: #4D4D4D;
 }
 
-/* Default Patch Carousel */  
+/* Default Patch Carousel */
 .default-patch-carousel {
   position: absolute;
   top: 50%;
@@ -113,15 +128,17 @@ button.get-started {
   max-height: 300px;
   opacity: 1;
 }
+
 .default-patch-carousel img {
   max-width: 12rem;
   max-height: 12rem;
   display: block;
   margin: 0 auto;
 }
+
 /* Styling for the slick-slide to add more space between the patches */
 .default-patch-carousel .slick-slide {
-  margin: 0 50px; 
+  margin: 0 50px;
 }
 
 /* Default Hat Carousel */
@@ -133,15 +150,17 @@ button.get-started {
   z-index: 1;
   width: 100%;
   max-height: 300px;
-  opacity: 1;  
+  opacity: 1;
 }
+
 .default-hat-carousel img {
   max-width: 21rem;
   max-height: 21rem;
   display: block;
   margin: 0 auto;
 }
-/* Styling for the slick-slide to add more space between the hats */  
+
+/* Styling for the slick-slide to add more space between the hats */
 .default-hat-carousel .slick-slide {
   margin: 0 50px;
 }
@@ -157,7 +176,7 @@ button.get-started {
   z-index: 500;
 }
 
-/* Toggle Section */  
+/* Toggle Section */
 .toggle-section {
   display: flex;
   position: relative;
@@ -188,7 +207,7 @@ button.get-started {
   position: absolute;
   left: 1%;
   width: 50%;
-  height: 86%; 
+  height: 86%;
   background-color: var(--hat-builder-toggle-active-bg-color);
   border-radius: 13px;
   border: solid #DBDAD6 0.75px;
@@ -196,7 +215,7 @@ button.get-started {
 }
 
 /* Adjust based on active toggle */
-#hatsToggle.active ~ .active-background {
+#hatsToggle.active~.active-background {
   left: 50%;
 }
 
@@ -212,7 +231,7 @@ button.get-started {
   background: transparent;
   color: #161616;
   position: relative;
-  z-index: 2;  
+  z-index: 2;
 }
 
 .toggle-button.active {
@@ -228,7 +247,7 @@ button.get-started {
   overflow: visible;
   opacity: 75%;
   right: 50%;
-  transform: translateX(50%); 
+  transform: translateX(50%);
 }
 
 #patchHighlight {
@@ -236,10 +255,10 @@ button.get-started {
 }
 
 #hatHighlight {
-  width: 206px;  
+  width: 206px;
 }
 
-.patch-carousel-container, 
+.patch-carousel-container,
 .hat-carousel-container {
   position: relative;
   justify-content: center;
@@ -273,7 +292,7 @@ button.get-started {
 
 /* AI's Suggested Additions */
 
-.patch-carousel, 
+.patch-carousel,
 .hat-carousel {
   /* Individual carousel styles */
   /* You can leave this empty for now */
