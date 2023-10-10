@@ -146,6 +146,14 @@
   <div class="hat-carousel-container">
 
     <!-- Hat Carousels -->
+    <div class="hat-carousel" id="hats-all" style="display:none;">
+     {% for product in collections['hats'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
     <div class="hat-carousel" id="hats-richardson" style="display:none;">
      {% for product in collections['richardson'].products %}
        <div>
@@ -162,6 +170,29 @@
      {% endfor %}
     </div>
 
+    <div class="hat-carousel" id="hats-yupoong" style="display:none;">
+     {% for product in collections['yupoong'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="hat-carousel" id="hats-pacific" style="display:none;">
+     {% for product in collections['pacific'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="hat-carousel" id="hats-flexfit" style="display:none;">
+     {% for product in collections['flexfit'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
     <!-- Additional hat carousels -->
 
   </div>
