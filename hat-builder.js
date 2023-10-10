@@ -1,24 +1,24 @@
 // Map collection names to carousel IDs
 const collectionToCarouselMap = {
-    "patches": "patches-all-carousel", 
-    "patches-nascar-drivers-teams": "patches-nascar-drivers-teams-carousel",
-	"patches-speedways-racing-series": "patches-speedways-racing-series-carousel",
-	"patches-ag-farming": "patches-ag-farming-carousel",
-	"patches-beer-liquor": "patches-beer-liquor-carousel",
-	"patches-car-truck-brands": "patches-car-truck-brands-carousel",
-	"patches-racing-brands": "patches-racing-brands-carousel",
-	"patches-diesel": "patches-diesel-carousel",
-	"patches-drag-racing": "patches-drag-racing-carousel",
-	"patches-hunting-fishing-guns": "patches-hunting-fishing-guns-carousel",
-	"patches-motorcycle-brands": "patches-motorcycle-brands-carousel",
-	"patches-national-parks": "patches-national-parks-carousel",
-	"patches-miscellaneous": "patches-miscellaneous-carousel",
+  "patches": "patches-all-carousel",
+  "patches-nascar-drivers-teams": "patches-nascar-drivers-teams-carousel",
+  "patches-speedways-racing-series": "patches-speedways-racing-series-carousel",
+  "patches-ag-farming": "patches-ag-farming-carousel",
+  "patches-beer-liquor": "patches-beer-liquor-carousel",
+  "patches-car-truck-brands": "patches-car-truck-brands-carousel",
+  "patches-racing-brands": "patches-racing-brands-carousel",
+  "patches-diesel": "patches-diesel-carousel",
+  "patches-drag-racing": "patches-drag-racing-carousel",
+  "patches-hunting-fishing-guns": "patches-hunting-fishing-guns-carousel",
+  "patches-motorcycle-brands": "patches-motorcycle-brands-carousel",
+  "patches-national-parks": "patches-national-parks-carousel",
+  "patches-miscellaneous": "patches-miscellaneous-carousel",
   //...other patch collections
-    "hats": "hats-all-carousel",
-    "richardson": "hats-richardson-carousel",
-	"imperial": "hats-imperial-carousel",
-	"yupoong": "hats-yupoong-carousel",
-	"pacific": "hats-pacific-carousel"
+  "hats": "hats-all-carousel",
+  "richardson": "hats-richardson-carousel",
+  "imperial": "hats-imperial-carousel",
+  "yupoong": "hats-yupoong-carousel",
+  "pacific": "hats-pacific-carousel"
   //...other hat collections
 };
 
@@ -26,8 +26,8 @@ const collectionToCarouselMap = {
 function showCarousel(carouselId) {
 
   // Hide all patch carousels
-  $(".patch-carousel").hide(); 
-  
+  $(".patch-carousel").hide();
+
   // Hide all hat carousels
   $(".hat-carousel").hide();
 
@@ -40,7 +40,7 @@ function handleCollectionClick() {
 
   // Get collection name
   const collection = $(this).data("collection");
-  
+
   // Get carousel ID
   const carouselId = collectionToCarouselMap[collection];
 
@@ -49,24 +49,24 @@ function handleCollectionClick() {
 
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   // Collection click handler
   $(".collection").on("click", handleCollectionClick);
 
   // Initialize patch carousels
   $(".patch-carousel").slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      centerMode: true,
-      arrows: false,
-      adaptiveHeight: false,
-      variableWidth: true
-    });
-  
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+    arrows: false,
+    adaptiveHeight: false,
+    variableWidth: true
+  });
+
   // Initialize hat carousels
   $(".hat-carousel").slick({
     infinite: true,
@@ -85,7 +85,7 @@ $(document).ready(function() {
   const pauseSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 7.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75Z" fill="#332E21"/><path d="M12.75 8a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" fill="#332E21"/></svg>`;
 
   // Handle play/pause functionality for carousels
-  $('#playPauseIcon').on('click', function() {
+  $('#playPauseIcon').on('click', function () {
     if ($(this).attr('data-state') === 'playing') {
       $('.default-patch-carousel, .default-hat-carousel').slick('slickPause');
       $(this).attr('data-state', 'paused');
@@ -102,16 +102,16 @@ $(document).ready(function() {
   });
 
   // Handle toggle click event for switching carousels
-  $('#patchesToggle, #hatsToggle').on('click', function() {
+  $('#patchesToggle, #hatsToggle').on('click', function () {
     if ($(this).hasClass('active')) return;
-    
+
     $('.toggle-button').removeClass('active');
     $(this).addClass('active');
-    
+
     toggleCarouselPlayback();
     updateHatBuilderHeader();
 
-    if($('#hatsToggle').hasClass('active')) {
+    if ($('#hatsToggle').hasClass('active')) {
       $('.active-background').css('left', '49%');
     } else {
       $('.active-background').css('left', '1%');
@@ -123,7 +123,7 @@ $(document).ready(function() {
     } else {
       $('#hatHighlight').show();
       $('#patchHighlight').hide();
-    } 
+    }
   });
 
   // Update header label based on active carousel
@@ -147,7 +147,7 @@ $(document).ready(function() {
   setInitialCategoryDisplay();
 
   // Scroll to hat builder container on button click
-  $('#scrollButton').on('click', function() {
+  $('#scrollButton').on('click', function () {
     const targetScroll = $(".hat-builder-container").offset().top;
     $('html, body').animate({
       scrollTop: targetScroll
