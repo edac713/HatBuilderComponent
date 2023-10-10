@@ -103,10 +103,13 @@ function updateCarouselBasedOnCollection() {
 function updateCarousel(collectionName) {
   const targetCarousel = collectionToCarouselMap[collectionName];
   if (targetCarousel) {
-    // Code to dynamically update the content of the default carousels
+    // Fetch the content of the target carousel
+    const targetContent = $(targetCarousel).html();
+    
+    // Update the content of the default patch and hat carousels
+    $(".default-patch-carousel, .default-hat-carousel").html(targetContent);
   }
 }
-
 
 // Attach event listeners to collection cards
 document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
