@@ -122,17 +122,17 @@ function updateCarouselBasedOnCollection() {
     });
   }
 
-    // New function to update carousel based on clickedId
-  function updateCarouselBasedOnCollection(clickedId) {
-    // Hide all carousels
-    $(".default-patch-carousel, .default-hat-carousel").hide();
-    
-    // Show the carousel based on clickedId
-    const carouselClass = collectionToCarouselMap[clickedId];
-    if (carouselClass) {
-      $(carouselClass).show();
-    }
+function updateCarouselBasedOnCollection(clickedId) {
+  // Hide the current active carousel
+  $(".default-patch-carousel, .default-hat-carousel").hide();  // Add this line here
+
+  // Show the carousel based on clickedId
+  const carouselClass = collectionToCarouselMap[clickedId];
+  if (carouselClass) {
+    $(carouselClass).show();  // Add this line here
   }
+}
+
 
   // Existing event listeners for collection cards
   document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
