@@ -1,62 +1,67 @@
-$(document).ready(function(){
+$(document).ready(function() {
+  const PLAYING = 'playing';
+  const PAUSED = 'paused';
+  const PATCHES_TOGGLE = '#patchesToggle';
+  const HATS_TOGGLE = '#hatsToggle';
+  const PLAY_PAUSE_ICON = '#playPauseIcon';
 
-  // Initialize carousel for patches
-  function initializePatchCarousel() {
-    $('.default-patch-carousel').slick({
+  // Initialize Carousel
+  function initializeCarousel(selector, autoplay) {
+    $(selector).slick({
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
+      autoplay: autoplay,
       autoplaySpeed: 2000,
       centerMode: true,
       arrows: false,
       adaptiveHeight: false,
       variableWidth: true
     });
+    if (!autoplay) {
+      $(selector).slick('slickPause');
+    }
   }
 
-  // Initialize carousel for hats
-  function initializeHatCarousel() {
-    $('.default-hat-carousel').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: false,
-      autoplaySpeed: 2000,
-      centerMode: true,
-      arrows: false,
-      adaptiveHeight: false,
-      variableWidth: true
-    }).slick('slickPause');
-  }
-
-  // Initialize both carousels
-  function initializeCarousels() {
-    initializePatchCarousel();
-    initializeHatCarousel();
-  }
-
-  initializeCarousels();
+  initializeCarousel('.default-patch-carousel', true);
+  initializeCarousel('.default-hat-carousel', false);
 
   // SVG content for play and pause
   const playSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M13.875 10.65a.75.75 0 0 0 0-1.3l-5.25-3.03a.75.75 0 0 0-1.125.649v6.062a.75.75 0 0 0 1.125.65l5.25-3.032Zm-4.875 1.082v-3.464l3 1.732-3 1.732Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-5.5 7a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z" fill="#332E21"/></svg>`;
   const pauseSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 7.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75Z" fill="#332E21"/><path d="M12.75 8a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" fill="#332E21"/></svg>`;
 
   // Handle play/pause functionality for carousels
-  $('#playPauseIcon').on('click', function() {
-    if ($(this).attr('data-state') === 'playing') {
-      $('.default-patch-carousel, .default-hat-carousel').slick('slickPause');
-      $(this).attr('data-state', 'paused');
-      $(this).html(playSVG);
+  $(PLAY_PAUSE_ICON).on('click', function() {
+    const currentState = $(this).attr('data-state');
+    const targetCarousel = $(PATCHES_TOGGLE).hasClass('active') ? '.default-patch-carousel' : '.default-hat-carousel';
+    if (currentState === PLAYING) {
+      $(targetCarousel).slick('slickPause');
+      $(this).attr('data-state', PAUSED).html(playSVG);
     } else {
-      if ($('#patchesToggle').hasClass('active')) {
-        $('.default-patch-carousel').slick('slickPlay');
-      } else {
-        $('.default-hat-carousel').slick('slickPlay');
-      }
-      $(this).attr('data-state', 'playing');
-      $(this).html(pauseSVG);
+      $(targetCarousel).slick('slickPlay');
+      $(this).attr('data-state', PLAYING).html(pauseSVG);
     }
+  });
+
+  // Error Handling in AJAX
+  function updateCarousel(collectionName) {
+    $.ajax({
+      url: 'https://gearheadhats.com/collections/' + collectionName,
+      method: 'GET',
+      success: function(data) {
+        $('.default-patch-carousel').html(data);
+        $('.default-hat-carousel').html(data);
+      },
+      error: function() {
+        console.error('Failed to fetch data');
+      }
+    });
+  }
+
+  // Event Delegation for Collection Cards
+  $(document).on('click', '.collection-list__item, .hat-collection-list__item', function() {
+    const collectionName = $(this).attr('data-collection-name');
+    updateCarousel(collectionName);
   });
 
   // Toggle between patch and hat carousels
