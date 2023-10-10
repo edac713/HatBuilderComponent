@@ -1,115 +1,115 @@
 <!-- Default Patch Carousel -->
-<div class="default-patch-carousel">
+<div class="default-patch-carousel" id="patches">
     {% for product in collections['patches'].products %}
         <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
     {% endfor %}
 </div>
-    <!-- nascar-drivers-teams Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-nascar-drivers-teams'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- speedways-racing-series Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['speedways-racing-series'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- ag-farming Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-ag-farming'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- beer-liqour Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-beer-liqour'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- car-truck-brands Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-car-truck-brands'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- racing-brands Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-racing-brands'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- diesel Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-diesel'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- drag-racing Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-drag-racing'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- hunting-fishing-guns Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-hunting-fishing-guns'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- motorcycle-brands Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-motorcycle-brands'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- national-parks Patch Carousel -->
-        <div class="default-patch-carousel">
-            {% for product in collections['patches-national-parks'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- miscellaneous Patch Carousel -->
-    <div class="default-patch-carousel">
-        {% for product in collections['patches-miscellaneous'].products %}
-            <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-        {% endfor %}
-    </div>
+<!-- nascar-drivers-teams Patch Carousel -->
+<div class="default-patch-carousel" id="patches-nascar-drivers-teams">
+    {% for product in collections['patches-nascar-drivers-teams'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- speedways-racing-series Patch Carousel -->
+<div class="default-patch-carousel" id="patches-speedways-racing-series">
+    {% for product in collections['patches-speedways-racing-series'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- ag-farming Patch Carousel -->
+<div class="default-patch-carousel" id="patches-ag-farming">
+    {% for product in collections['patches-ag-farming'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- beer-liqour Patch Carousel -->
+<div class="default-patch-carousel" id="patches-beer-liqour">
+    {% for product in collections['patches-beer-liqour'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- car-truck-brands Patch Carousel -->
+<div class="default-patch-carousel" id="patches-car-truck-brands">
+    {% for product in collections['patches-car-truck-brands'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- racing-brands Patch Carousel -->
+<div class="default-patch-carousel" id="patches-racing-brands">
+    {% for product in collections['patches-racing-brands'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- diesel Patch Carousel -->
+<div class="default-patch-carousel" id="patches-diesel">
+    {% for product in collections['patches-diesel'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- drag-racing Patch Carousel -->
+<div class="default-patch-carousel" id="patches-drag-racing">
+    {% for product in collections['patches-drag-racing'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- hunting-fishing-guns Patch Carousel -->
+<div class="default-patch-carousel" id="patches-hunting-fishing-guns">
+    {% for product in collections['patches-hunting-fishing-guns'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- motorcycle-brands Patch Carousel -->
+<div class="default-patch-carousel" id="patches-motorcycle-brands">
+    {% for product in collections['patches-motorcycle-brands'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- national-parks Patch Carousel -->
+<div class="default-patch-carousel" id="patches-national-parks">
+    {% for product in collections['patches-national-parks'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- miscellaneous Patch Carousel -->
+<div class="default-patch-carousel" id="patches-miscellaneous">
+    {% for product in collections['patches-miscellaneous'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
 
 <!-- Default Hat Carousel -->
-<div class="default-hat-carousel">
+<div class="default-hat-carousel" id="hats">
     {% for product in collections['hats'].products %}
         <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
     {% endfor %}
 </div>
-    <!-- richardson Hat Carousel -->
-        <div class="default-hat-carousel">
-            {% for product in collections['richardson'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- imperial Hat Carousel -->
-        <div class="default-hat-carousel">
-            {% for product in collections['imperial'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- yupoong Hat Carousel -->
-        <div class="default-hat-carousel">
-            {% for product in collections['yupoong'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- pacific Hat Carousel -->
-        <div class="default-hat-carousel">
-            {% for product in collections['pacific'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
-    <!-- flexfit Hat Carousel -->
-        <div class="default-hat-carousel">
-            {% for product in collections['flexfit'].products %}
-                <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
-            {% endfor %}
-        </div>
+<!-- richardson Hat Carousel -->
+<div class="default-hat-carousel" id="hats-richardson">
+    {% for product in collections['richardson'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- imperial Hat Carousel -->
+<div class="default-hat-carousel" id="hats-imperial">
+    {% for product in collections['imperial'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- yupoong Hat Carousel -->
+<div class="default-hat-carousel" id="hats-yupoong">
+    {% for product in collections['yupoong'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- pacific Hat Carousel -->
+<div class="default-hat-carousel" id="hats-pacific">
+    {% for product in collections['pacific'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
+<!-- flexfit Hat Carousel -->
+<div class="default-hat-carousel" id="hats-flexfit">
+    {% for product in collections['flexfit'].products %}
+        <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
+    {% endfor %}
+</div>
