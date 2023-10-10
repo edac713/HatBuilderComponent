@@ -123,13 +123,13 @@ function updateCarouselBasedOnCollection() {
   }
 
 function updateCarouselBasedOnCollection(clickedId) {
-  // Hide the current active carousel
-  $(".default-patch-carousel, .default-hat-carousel").hide();  // Add this line here
-
+  // Hide all carousels
+  $(".default-patch-carousel, .default-hat-carousel").hide();
+  
   // Show the carousel based on clickedId
   const carouselClass = collectionToCarouselMap[clickedId];
   if (carouselClass) {
-    $(carouselClass).show();  // Add this line here
+    $(carouselClass).show();
   }
 }
 
@@ -142,17 +142,16 @@ function updateCarouselBasedOnCollection(clickedId) {
     });
   });
 
-  // New event listener for clicks on collection cards
-  $(".collection-list__item").on("click", function(event) {
-    event.preventDefault();  // Prevent default action
-    const clickedId = $(this).data("target-carousel");
-    updateCarouselBasedOnCollection(clickedId);
-  });
-}
+$(".collection-list__item").on("click", function(event) {
+  event.preventDefault();  // Prevent default action
+  const clickedId = $(this).data("target-carousel");
+  updateCarouselBasedOnCollection(clickedId);
+});
+
 
 // Call the function to initialize the behavior
 updateCarouselBasedOnCollection();
-
+}
   
   // Update header label based on active carousel
   function updateHatBuilderHeader() {
