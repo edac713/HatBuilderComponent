@@ -105,7 +105,8 @@ function updateCarouselBasedOnCollection() {
     // Use AJAX to fetch new content based on 'collectionName'
     // and update the default carousels
     $.ajax({
-      url: `/collections/${collectionName}`,
+      url: 'https://gearheadhats.com/collections/patches-nascar-drivers-teams',
+      method: 'GET',
       success: function(data) {
         // Update the default carousels with new data
         $('.default-patch-carousel').html(data);
