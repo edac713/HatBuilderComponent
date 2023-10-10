@@ -247,14 +247,14 @@ button.get-started {
   overflow: visible;
 }
 
-.patch-carousel-container {
+.patch-carousels {
   width: 100%;
   height: 120px;
   top: 45px;
   z-index: 1;
 }
 
-.hat-carousel-container {
+.hat-carousels {
   width: 100%;
   height: 206px;
   top: -110px;
@@ -272,14 +272,6 @@ button.get-started {
 }
 
 /* AI's Suggested Additions */
-.patch-carousels,
-.hat-carousels {
-  /* Copy styles from .patch-carousel-container and .hat-carousel-container */
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
-}
 
 .patch-carousel, 
 .hat-carousel {
