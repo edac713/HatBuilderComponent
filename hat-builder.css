@@ -270,3 +270,25 @@ button.get-started {
   align-items: center;
   overflow: visible;
 }
+
+/* AI's Suggested Additions */
+.patch-carousels,
+.hat-carousels {
+  /* Copy styles from .patch-carousel-container and .hat-carousel-container */
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.patch-carousel, 
+.hat-carousel {
+  /* Individual carousel styles */
+  /* You can leave this empty for now */
+}
+
+#patches-all-carousel,
+#hats-all-carousel {
+  /* Default all carousels */
+  /* You can leave this empty for now */
+}
