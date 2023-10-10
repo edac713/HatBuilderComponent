@@ -108,9 +108,13 @@ function updateCarousel(collectionName) {
     
     // Update the content of the default patch and hat carousels
     $(".default-patch-carousel, .default-hat-carousel").html(targetContent);
+    
+    // Re-initialize the carousels to make sure the new content is displayed correctly
+    initializePatchCarousel();
+    initializeHatCarousel();
   }
 }
-
+  
 // Attach event listeners to collection cards
 document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
   card.addEventListener('click', function(event) {
