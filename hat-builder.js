@@ -1,3 +1,8 @@
+// Define the function in the global scope
+function updateCarousel(collectionName) {
+  // Your existing code here
+}
+
 $(document).ready(function() {
   const PLAYING = 'playing';
   const PAUSED = 'paused';
@@ -5,6 +10,13 @@ $(document).ready(function() {
   const HATS_TOGGLE = '#hatsToggle';
   const PLAY_PAUSE_ICON = '#playPauseIcon';
 
+  // Event Listener
+  $(document).on('click', '.collection-list__item, .hat-collection-list__item', function(event) {
+    event.preventDefault();
+    const collectionName = $(this).attr('data-collection-name');
+    updateCarousel(collectionName);  // This should now work
+  });
+  
   // Initialize Carousel
   function initializeCarousel(selector, autoplay) {
     $(selector).slick({
@@ -43,27 +55,6 @@ $(document).ready(function() {
       $(targetCarousel).slick('slickPlay');
       $(this).attr('data-state', PLAYING).html(pauseSVG);
     }
-  });
-
-  // Error Handling in AJAX
-  function updateCarousel(collectionName) {
-    $.ajax({
-      url: 'https://gearheadhats.com/collections/' + collectionName,
-      method: 'GET',
-      success: function(data) {
-        $('.default-patch-carousel').html(data);
-        $('.default-hat-carousel').html(data);
-      },
-      error: function() {
-        console.error('Failed to fetch data');
-      }
-    });
-  }
-
-  // Event Delegation for Collection Cards
-  $(document).on('click', '.collection-list__item, .hat-collection-list__item', function() {
-    const collectionName = $(this).attr('data-collection-name');
-    updateCarousel(collectionName);
   });
 
   // Toggle between patch and hat carousels
