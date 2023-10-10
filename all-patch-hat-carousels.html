@@ -92,7 +92,53 @@
      {% endfor %}
     </div>
 
+    <div class="patch-carousel" id="patches-diesel" style="display:none;">
+     {% for product in collections['patches-diesel'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
 
+    <div class="patch-carousel" id="patches-drag-racing" style="display:none;">
+     {% for product in collections['patches-drag-racing'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="patch-carousel" id="patches-hunting-fishing-guns" style="display:none;">
+     {% for product in collections['patches-hunting-fishing-guns'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="patch-carousel" id="patches-motorcycle-brands" style="display:none;">
+     {% for product in collections['patches-motorcycle-brands'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="patch-carousel" id="patches-national-parks" style="display:none;">
+     {% for product in collections['patches-national-parks'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
+
+    <div class="patch-carousel" id="patches-miscellaneous" style="display:none;">
+     {% for product in collections['patches-miscellaneous'].products %}
+       <div>
+         <img src="{{ product.images.first | img_url: 'medium' }}" alt="{{product.title}}">
+       </div>
+     {% endfor %}
+    </div>
     <!-- Additional patch carousels -->
 
   </div>
