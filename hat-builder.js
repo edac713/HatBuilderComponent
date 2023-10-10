@@ -115,6 +115,21 @@ function updateCarouselBasedOnCollection() {
     });
   }
 
+  function updateCarouselBasedOnCollection(clickedId) {
+  // Hide all carousels
+  $(".default-patch-carousel, .default-hat-carousel").hide();
+
+  // Show the carousel based on clickedId
+  $("#" + clickedId).show();
+}
+
+// Listen for clicks on collection cards
+$(".collection-list__item").on("click", function(event) {
+  event.preventDefault();  // Prevent default action
+  const clickedId = $(this).data("target-carousel");
+  updateCarouselBasedOnCollection(clickedId);
+});
+
   // Attach event listeners to collection cards
   document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
     card.addEventListener('click', function() {
