@@ -1,3 +1,17 @@
+// New: Map collection names to carousel IDs
+const collectionToCarouselMap = {
+  "patches": "patches-all-carousel",
+  "patches-nascar-drivers-teams": "patches-nascar-drivers-teams-carousel",
+  // ...
+};
+
+// New: Show target carousel, hide others
+function showCarousel(carouselId) {
+  $(".patch-carousel").hide();
+  $(".hat-carousel").hide();
+  $("#" + carouselId).show();
+}
+
 // Define the function in the global scope
 function updateCarousel(collectionName) {
   // Your existing code here
@@ -14,7 +28,7 @@ $(document).ready(function() {
   $(document).on('click', '.collection-list__item, .hat-collection-list__item', function(event) {
     event.preventDefault();
     const collectionName = $(this).attr('data-collection-name');
-    updateCarousel(collectionName);  // This should now work
+    updateCarousel(collectionName);
   });
   
   // Initialize Carousel
@@ -37,8 +51,7 @@ $(document).ready(function() {
 
   initializeCarousel('.default-patch-carousel', true);
   initializeCarousel('.default-hat-carousel', false);
-  $(".default-patch-carousel, .default-hat-carousel").not("#patches, #hats").hide();  // Add this line here
-
+  $(".default-patch-carousel, .default-hat-carousel").not("#patches, #hats").hide();
 
   // SVG content for play and pause
   const playSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M13.875 10.65a.75.75 0 0 0 0-1.3l-5.25-3.03a.75.75 0 0 0-1.125.649v6.062a.75.75 0 0 0 1.125.65l5.25-3.032Zm-4.875 1.082v-3.464l3 1.732-3 1.732Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-5.5 7a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z" fill="#332E21"/></svg>`;
@@ -56,6 +69,14 @@ $(document).ready(function() {
       $(this).attr('data-state', PLAYING).html(pauseSVG);
     }
   });
+
+  // New: Handle collection clicks
+  $(".collection").click(function() {
+    const collection = $(this).data("collection");
+    const carouselId = collectionToCarouselMap[collection];
+    showCarousel(carouselId);
+  });
+
 
   // Toggle between patch and hat carousels
   function toggleCarouselPlayback() {
