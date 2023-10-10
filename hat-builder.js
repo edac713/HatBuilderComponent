@@ -100,19 +100,25 @@ function updateCarouselBasedOnCollection() {
     // ... add other hat collections here
   };
 
-  // Attach event listeners to patch collection cards
-  document.querySelectorAll('.collection-list__item').forEach(function(card) {
-    card.addEventListener('click', function() {
-      const collectionName = card.getAttribute('data-collection-name');
-      // Placeholder for new logic
+  // Function to update the carousel
+  function updateCarousel(collectionName) {
+    // Use AJAX to fetch new content based on 'collectionName'
+    // and update the default carousels
+    $.ajax({
+      url: `/collections/${collectionName}`,
+      success: function(data) {
+        // Update the default carousels with new data
+        $('.default-patch-carousel').html(data);
+        $('.default-hat-carousel').html(data);
+      }
     });
-  });
+  }
 
-  // Attach event listeners to hat collection cards
-  document.querySelectorAll('.hat-collection-list__item').forEach(function(card) {
+  // Attach event listeners to collection cards
+  document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
     card.addEventListener('click', function() {
       const collectionName = card.getAttribute('data-collection-name');
-      // Placeholder for new logic
+      updateCarousel(collectionName);
     });
   });
 }
