@@ -2,10 +2,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 
+<!-- Load Slick Carousel CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
 
+<!-- Load Custom CSS -->
 {{ 'hat-builder.css' | asset_url | stylesheet_tag }}
-{{ 'hat-builder.js' | asset_url | script_tag }}
+
+<!-- Load New Custom JS -->
+{{ 'hat-builder-new.js' | asset_url | script_tag }}
 
 <!-- Get Started Button -->
 <div class="button-container" id="button-container">
