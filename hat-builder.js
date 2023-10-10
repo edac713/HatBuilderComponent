@@ -100,12 +100,12 @@ function updateCarouselBasedOnCollection() {
     // ... add other hat collections here
   };
 
-  // Function to update the carousel
+ // Function to update the carousel
   function updateCarousel(collectionName) {
     // Use AJAX to fetch new content based on 'collectionName'
     // and update the default carousels
     $.ajax({
-      url: 'https://gearheadhats.com/collections/patches-nascar-drivers-teams',
+      url: 'https://gearheadhats.com/collections/' + collectionName,
       method: 'GET',
       success: function(data) {
         // Update the default carousels with new data
@@ -115,29 +115,32 @@ function updateCarouselBasedOnCollection() {
     });
   }
 
+  // New function to update carousel based on clickedId
   function updateCarouselBasedOnCollection(clickedId) {
-  // Hide all carousels
-  $(".default-patch-carousel, .default-hat-carousel").hide();
+    // Hide all carousels
+    $(".default-patch-carousel, .default-hat-carousel").hide();
+    // Show the carousel based on clickedId
+    $("#" + clickedId).show();
+  }
 
-  // Show the carousel based on clickedId
-  $("#" + clickedId).show();
-}
-
-// Listen for clicks on collection cards
-$(".collection-list__item").on("click", function(event) {
-  event.preventDefault();  // Prevent default action
-  const clickedId = $(this).data("target-carousel");
-  updateCarouselBasedOnCollection(clickedId);
-});
-
-  // Attach event listeners to collection cards
+  // Existing event listeners for collection cards
   document.querySelectorAll('.collection-list__item, .hat-collection-list__item').forEach(function(card) {
     card.addEventListener('click', function() {
       const collectionName = card.getAttribute('data-collection-name');
       updateCarousel(collectionName);
     });
   });
+
+  // New event listener for clicks on collection cards
+  $(".collection-list__item").on("click", function(event) {
+    event.preventDefault();  // Prevent default action
+    const clickedId = $(this).data("target-carousel");
+    updateCarouselBasedOnCollection(clickedId);
+  });
 }
+
+// Call the function to initialize the behavior
+updateCarouselBasedOnCollection();
 
   
   // Update header label based on active carousel
@@ -184,9 +187,6 @@ $(".collection-list__item").on("click", function(event) {
   }
 
   setInitialCategoryDisplay();
-  
-  // Call the function to initialize
-updateCarouselBasedOnCollection();
 
   // Scroll to hat builder container on button click
   $('#scrollButton').on('click', function() {
