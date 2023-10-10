@@ -115,12 +115,16 @@ function updateCarouselBasedOnCollection() {
     });
   }
 
-  // New function to update carousel based on clickedId
+    // New function to update carousel based on clickedId
   function updateCarouselBasedOnCollection(clickedId) {
     // Hide all carousels
     $(".default-patch-carousel, .default-hat-carousel").hide();
+    
     // Show the carousel based on clickedId
-    $("#" + clickedId).show();
+    const carouselClass = collectionToCarouselMap[clickedId];
+    if (carouselClass) {
+      $(carouselClass).show();
+    }
   }
 
   // Existing event listeners for collection cards
