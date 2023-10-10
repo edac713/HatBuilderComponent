@@ -1,3 +1,9 @@
+<!-- Hat Builder Carousel -->
+<div class="hat-builder-carousel-container">
+
+<!-- Patch carousel container -->
+<div class="patch-carousel-container">
+
 <!-- Default Patch Carousel -->
 <div class="default-patch-carousel" id="patches">
     {% for product in collections['patches'].products %}
@@ -77,6 +83,15 @@
     {% endfor %}
 </div>
 
+<!-- Highlight border -->
+<div class="highlight-box" id="patchHighlight"></div>
+
+</div>
+
+
+<!-- Hat carousel container -->
+<div class="hat-carousel-container">
+        
 <!-- Default Hat Carousel -->
 <div class="default-hat-carousel" id="hats">
     {% for product in collections['hats'].products %}
@@ -112,4 +127,11 @@
     {% for product in collections['flexfit'].products %}
         <div><img src="{{ product.images.first | img_url: 'medium' }}" alt="{{ product.title }}" /></div>
     {% endfor %}
+</div>
+
+<!-- Highlight border -->
+<div class="highlight-box" id="hatHighlight"></div> 
+    
+</div>
+
 </div>
