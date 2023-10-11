@@ -41,25 +41,34 @@ let displayedHatCarousel = null;
 
 function handleCollectionClick(event, clickedElement) {
   event.preventDefault();
-  
+
   // Get the collection name from the clicked element
   const collectionName = clickedElement.data("collection-name");
-  
+
+  // New code to format and update the label
+  let displayLabel = collectionName.replace("patches-", "").replace("hats-", "");
+  displayLabel = displayLabel.replace(/-/g, ' ');
+  displayLabel = displayLabel.replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
+  $('.hat-builder-collection-label').text(displayLabel);
+
+
   // Log for debugging
   console.log("Clicked collection:", collectionName);
-  
+
   // Get the corresponding carousel ID from the map
   const carouselId = collectionToCarouselMap[collectionName];
-  
+
   // Handle undefined carouselId
   if (!carouselId) {
     console.log("No carousel mapped for this collection");
     return;
   }
-  
+
   // Log for debugging
   console.log("Carousel to show:", carouselId);
-  
+
   // Determine the type of the current collection (either 'patches' or 'hats')
   const currentType = collectionName.startsWith('patches') ? 'patches' : 'hats';
 
@@ -79,24 +88,24 @@ function handleCollectionClick(event, clickedElement) {
     }
     displayedHatCarousel = carouselId;
   }
-  
+
   // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
 }
 
-$('#patchesToggle, #hatsToggle').on('click', function() {
+$('#patchesToggle, #hatsToggle').on('click', function () {
   // Remove 'active' class from both toggles
   $('#patchesToggle, #hatsToggle').removeClass('active');
-  
+
   // Add 'active' class to clicked toggle
   $(this).addClass('active');
-  
+
   // Update activeToggle variable
   activeToggle = $(this).attr('id').replace('Toggle', '');
-  
+
   // Hide both collection lists
   $('.collection-list').hide();
-  
+
   // Show the collection list corresponding to the active toggle
   $(`#shopify-section-template--14833441800262__${activeToggle}`).show();
 });
@@ -124,7 +133,7 @@ $(document).ready(function () {
   });
 
   // Initialize patch carousels
-  $("#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel").slick({
+  $(".patch-carousels > div").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -137,7 +146,7 @@ $(document).ready(function () {
   });
 
   // Initialize hat carousels
-  $("#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel").slick({
+  $(".hat-carousels > div").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -192,17 +201,17 @@ $(document).ready(function () {
       $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
       $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
     }
-    
-    // Determine which toggle is active
-  const activeToggle = $(this).attr('id').replace('Toggle', '');
 
-  // Pause/Play carousels based on active toggle
-  if (activeToggle === 'patches') {
-    $('.hat-carousels > div').slick('slickPause');
-    $('.patch-carousels > div').slick('slickPlay');
-  } else {
-    $('.patch-carousels > div').slick('slickPause');
-    $('.hat-carousels > div').slick('slickPlay');
-  }
+    // Determine which toggle is active
+    const activeToggle = $(this).attr('id').replace('Toggle', '');
+
+    // Pause/Play carousels based on active toggle
+    if (activeToggle === 'patches') {
+      $('.hat-carousels > div').slick('slickPause');
+      $('.patch-carousels > div').slick('slickPlay');
+    } else {
+      $('.patch-carousels > div').slick('slickPause');
+      $('.hat-carousels > div').slick('slickPlay');
+    }
   });
 });
