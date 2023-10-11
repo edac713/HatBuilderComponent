@@ -101,8 +101,6 @@ $('#patchesToggle, #hatsToggle').on('click', function() {
   $(`#shopify-section-template--14833441800262__${activeToggle}`).show();
 });
 
-
-
 // Additional functions from hat-builder-old.js
 function setInitialCategoryDisplay() {
   if ($('#patchesToggle').hasClass('active')) {
@@ -158,14 +156,14 @@ $(document).ready(function () {
   // Handle play/pause functionality for carousels
   $('#playPauseIcon').on('click', function () {
     if ($(this).attr('data-state') === 'playing') {
-      $('.default-patch-carousel, .default-hat-carousel').slick('slickPause');
+      $('.patch-carousels > div, .hat-carousels > div').slick('slickPause');
       $(this).attr('data-state', 'paused');
       $(this).html(playSVG);
     } else {
       if ($('#patchesToggle').hasClass('active')) {
-        $('.default-patch-carousel').slick('slickPlay');
+        $('.patch-carousels > div').slick('slickPlay');
       } else {
-        $('.default-hat-carousel').slick('slickPlay');
+        $('.hat-carousels > div').slick('slickPlay');
       }
       $(this).attr('data-state', 'playing');
       $(this).html(pauseSVG);
@@ -195,16 +193,16 @@ $(document).ready(function () {
       $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
     }
     
-  // Determine which toggle is active
+    // Determine which toggle is active
   const activeToggle = $(this).attr('id').replace('Toggle', '');
 
   // Pause/Play carousels based on active toggle
   if (activeToggle === 'patches') {
-    $('#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel').slick('slickPause');
-    $('#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel').slick('slickPlay');
+    $('.hat-carousels > div').slick('slickPause');
+    $('.patch-carousels > div').slick('slickPlay');
   } else {
-    $('#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel').slick('slickPause');
-    $('#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel').slick('slickPlay');
+    $('.patch-carousels > div').slick('slickPause');
+    $('.hat-carousels > div').slick('slickPlay');
   }
   });
 });
