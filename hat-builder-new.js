@@ -200,11 +200,11 @@ $(document).ready(function () {
 
   // Pause/Play carousels based on active toggle
   if (activeToggle === 'patches') {
-    $('.hat-carousel').slick('slickPause');
-    $('.patch-carousel').slick('slickPlay');
+    $('#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel').slick('slickPause');
+    $('#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel').slick('slickPlay');
   } else {
-    $('.patch-carousel').slick('slickPause');
-    $('.hat-carousel').slick('slickPlay');
+    $('#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel').slick('slickPause');
+    $('#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel').slick('slickPlay');
   }
   });
 });
