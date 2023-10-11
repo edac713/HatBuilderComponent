@@ -30,25 +30,63 @@ function showCarousel(carouselId) {
   $("#" + carouselId).show();
 }
 
-// Handle collection clicks
+let activeToggle = 'patches'; // Default active toggle
+
+// Variable to keep track of the currently displayed carousel for each type
+let displayedCarousel = {
+  patches: 'patches-all-carousel',
+  hats: 'hats-all-carousel'
+};
+
 function handleCollectionClick(event, clickedElement) {
   event.preventDefault();
-
+  
+  // Get the collection name from the clicked element
   const collectionName = clickedElement.data("collection-name");
+  
+  // Log for debugging
   console.log("Clicked collection:", collectionName);
-
+  
+  // Get the corresponding carousel ID from the map
   const carouselId = collectionToCarouselMap[collectionName];
-
+  
+  // Handle undefined carouselId
   if (!carouselId) {
     console.log("No carousel mapped for this collection");
     return;
   }
-
+  
+  // Log for debugging
   console.log("Carousel to show:", carouselId);
-
-  $(".patch-carousels div, .hat-carousels div").hide();
+  
+  // Hide the previously displayed carousel of the active toggle type
+  $('#' + displayedCarousel[activeToggle]).hide();
+  
+  // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
+
+  // Update the displayedCarousel for the active toggle type
+  displayedCarousel[activeToggle] = carouselId;
 }
+
+$('#patchesToggle, #hatsToggle').on('click', function() {
+  // Remove 'active' class from both toggles
+  $('#patchesToggle, #hatsToggle').removeClass('active');
+  
+  // Add 'active' class to clicked toggle
+  $(this).addClass('active');
+  
+  // Update activeToggle variable
+  activeToggle = $(this).attr('id').replace('Toggle', '');
+  
+  // Hide both collection lists
+  $('.collection-list').hide();
+  
+  // Show the collection list corresponding to the active toggle
+  $(`#shopify-section-template--14833441800262__${activeToggle}`).show();
+});
+
+
 
 // Additional functions from hat-builder-old.js
 function setInitialCategoryDisplay() {
