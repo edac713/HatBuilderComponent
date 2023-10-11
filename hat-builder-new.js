@@ -194,13 +194,17 @@ $(document).ready(function () {
       $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
       $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
     }
+    
+  // Determine which toggle is active
+  const activeToggle = $(this).attr('id').replace('Toggle', '');
 
-    if ($('#patchesToggle').hasClass('active')) {
-      $('#patchHighlight').show();
-      $('#hatHighlight').hide();
-    } else {
-      $('#hatHighlight').show();
-      $('#patchHighlight').hide();
-    }
+  // Pause/Play carousels based on active toggle
+  if (activeToggle === 'patches') {
+    $('.hat-carousel').slick('slickPause');
+    $('.patch-carousel').slick('slickPlay');
+  } else {
+    $('.patch-carousel').slick('slickPause');
+    $('.hat-carousel').slick('slickPlay');
+  }
   });
 });
