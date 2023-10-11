@@ -2,7 +2,7 @@
 const collectionToCarouselMap = {
   "patches": "patches-all-carousel",
   "patches-nascar-drivers-teams": "patches-nascar-drivers-teams-carousel",
-  "speedways-racing-series": "patches-speedways-racing-series-carousel",
+  "patches-speedways-racing-series": "patches-speedways-racing-series-carousel",
   "patches-ag-farming": "patches-ag-farming-carousel",
   "patches-beer-liquor": "patches-beer-liquor-carousel",
   "patches-car-truck-brands": "patches-car-truck-brands-carousel",
@@ -12,7 +12,7 @@ const collectionToCarouselMap = {
   "patches-hunting-fishing-guns": "patches-hunting-fishing-guns-carousel",
   "patches-motorcycle-brands": "patches-motorcycle-brands-carousel",
   "patches-national-parks": "patches-national-parks-carousel",
-  "miscellaneous": "patches-miscellaneous-carousel",
+  "patches-miscellaneous": "patches-miscellaneous-carousel",
   //...other patch collections
   "hats": "hats-all-carousel",
   "richardson": "hats-richardson-carousel",
@@ -35,11 +35,9 @@ function showCarousel(carouselId) {
 
 let activeToggle = 'patches'; // Default active toggle
 
-// Variable to keep track of the currently displayed carousel for each type
-let displayedCarousel = {
-  patches: 'patches-all-carousel',
-  hats: 'hats-all-carousel'
-};
+// Separate variables to keep track of the currently displayed carousel for patches and hats
+let displayedPatchCarousel = null;
+let displayedHatCarousel = null;
 
 function handleCollectionClick(event, clickedElement) {
   event.preventDefault();
@@ -67,16 +65,23 @@ function handleCollectionClick(event, clickedElement) {
 
   // Hide the previously displayed carousel of the same type
   if (currentType === 'patches') {
-    $('#' + displayedCarousel['patches']).hide();
+    // Hide the "patches-all" carousel
+    $('#patches-all-carousel').hide();
+    if (displayedPatchCarousel) {
+      $('#' + displayedPatchCarousel).hide();
+    }
+    displayedPatchCarousel = carouselId;
   } else {
-    $('#' + displayedCarousel['hats']).hide();
+    // Hide the "hats-all" carousel
+    $('#hats-all-carousel').hide();
+    if (displayedHatCarousel) {
+      $('#' + displayedHatCarousel).hide();
+    }
+    displayedHatCarousel = carouselId;
   }
   
   // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
-
-  // Update the displayedCarousel for the active toggle type
-  displayedCarousel[activeToggle] = carouselId;
 }
 
 $('#patchesToggle, #hatsToggle').on('click', function() {
