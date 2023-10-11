@@ -130,8 +130,12 @@ $(document).ready(function () {
 
     if ($('#hatsToggle').hasClass('active')) {
       $('.active-background').css('left', '49%');
+      $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').hide();
+      $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').show();
     } else {
       $('.active-background').css('left', '1%');
+      $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
+      $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
     }
 
     if ($('#patchesToggle').hasClass('active')) {
