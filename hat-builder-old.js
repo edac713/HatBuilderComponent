@@ -55,7 +55,7 @@ $(document).ready(function () {
   $(".collection").on("click", handleCollectionClick);
 
   // Initialize patch carousels
-  $(".patch-carousel").slick({
+  $("#patches-all-carousel").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -68,7 +68,7 @@ $(document).ready(function () {
   });
 
   // Initialize hat carousels
-  $(".hat-carousel").slick({
+  $("#hats-all-carousel").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
