@@ -157,6 +157,10 @@ $(document).ready(function () {
     }
   });
 
+  // Set initial visibility
+  $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
+  $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
+
   // Handle toggle click event for switching carousels
   $('#patchesToggle, #hatsToggle').on('click', function () {
     if ($(this).hasClass('active')) return;
