@@ -104,6 +104,8 @@ button.get-started {
 .hat-builder-right-heading {
   display: flex;
   align-items: center;
+  font-size: 13px;
+  color: var(--hat-builder-text-color);
 }
 
 .hat-builder-collection-icon {
@@ -111,13 +113,6 @@ button.get-started {
   width: 20px;
   height: 20px;
 }
-
-.hat-builder-collection-label {
-  font-size: 16px;
-  color: #4D4D4D;
-}
-
-
 
 
 
@@ -134,7 +129,7 @@ button.get-started {
 }
 
 /* Patch Carousels */
-.patch-carousels {
+.patch-carousels>div {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -145,7 +140,7 @@ button.get-started {
   opacity: 1;
 }
 
-.patch-carousels img {
+.patch-carousels>div img {
   max-width: 12rem;
   max-height: 12rem;
   display: block;
@@ -153,12 +148,12 @@ button.get-started {
 }
 
 /* Styling for the slick-slide to add more space between the patches */
-.patch-carousels .slick-slide {
+.patch-carousels>div .slick-slide {
   margin: 0 50px;
 }
 
 /* Hat Carousels */
-.hat-carousels {
+.hat-carousels>div {
   position: absolute;
   top: 54%;
   left: 50%;
@@ -169,7 +164,7 @@ button.get-started {
   opacity: 1;
 }
 
-.hat-carousels img {
+.hat-carousels>div img {
   max-width: 21rem;
   max-height: 21rem;
   display: block;
@@ -177,7 +172,7 @@ button.get-started {
 }
 
 /* Styling for the slick-slide to add more space between the hats */
-.hat-carousels .slick-slide {
+.hat-carousels>div .slick-slide {
   margin: 0 50px;
 }
 
