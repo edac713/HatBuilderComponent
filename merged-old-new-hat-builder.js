@@ -73,7 +73,7 @@ $(document).ready(function () {
   });
 
   // Initialize patch carousels
-  $("#patches-all-carousel").slick({
+  $("#patches-all-carousel, #patches-nascar-drivers-teams-carousel, #patches-speedways-racing-series-carousel, #patches-ag-farming-carousel, #patches-beer-liquor-carousel, #patches-car-truck-brands-carousel, #patches-racing-brands-carousel, #patches-diesel-carousel, #patches-drag-racing-carousel, #patches-hunting-fishing-guns-carousel, #patches-motorcycle-brands-carousel, #patches-national-parks-carousel, #patches-miscellaneous-carousel").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -86,7 +86,7 @@ $(document).ready(function () {
   });
 
   // Initialize hat carousels
-  $("#hats-all-carousel").slick({
+  $("#hats-all-carousel, #hats-richardson-carousel, #hats-imperial-carousel, #hats-yupoong-carousel, #hats-pacific-carousel, #hats-flexfit-carousel").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
