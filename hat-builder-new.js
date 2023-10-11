@@ -56,3 +56,32 @@ $(document).ready(function() {
   handleCollectionClick(event, $(this));
 });
 });
+
+// Handle toggle click event for switching carousels
+$('#patchesToggle, #hatsToggle').on('click', function () {
+  if ($(this).hasClass('active')) return;
+
+  $('.toggle-button').removeClass('active');
+  $(this).addClass('active');
+
+  toggleCarouselPlayback();
+  updateHatBuilderHeader();
+
+  if ($('#hatsToggle').hasClass('active')) {
+    $('.active-background').animate({
+      left: '49%'  // Move the active background to the right
+    }, 500);  // Animation duration in milliseconds
+  } else {
+    $('.active-background').animate({
+      left: '1%'  // Move the active background to the left
+    }, 500);  // Animation duration in milliseconds
+  }
+
+  if ($('#patchesToggle').hasClass('active')) {
+    $('#patchHighlight').show();
+    $('#hatHighlight').hide();
+  } else {
+    $('#hatHighlight').show();
+    $('#patchHighlight').hide();
+  }
+});
