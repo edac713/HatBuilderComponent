@@ -23,10 +23,13 @@ const collectionToCarouselMap = {
   //...other hat collections
 };
 
-// Show target carousel, hide others
+// Show target carousel, hide others of the same type
 function showCarousel(carouselId) {
-  $(".patch-carousel").hide();
-  $(".hat-carousel").hide();
+  if (carouselId.includes("patches")) {
+    $(".patch-carousel").hide();
+  } else {
+    $(".hat-carousel").hide();
+  }
   $("#" + carouselId).show();
 }
 
@@ -59,8 +62,15 @@ function handleCollectionClick(event, clickedElement) {
   // Log for debugging
   console.log("Carousel to show:", carouselId);
   
-  // Hide the previously displayed carousel of the active toggle type
-  $('#' + displayedCarousel[activeToggle]).hide();
+  // Determine the type of the current collection (either 'patches' or 'hats')
+  const currentType = collectionName.startsWith('patches') ? 'patches' : 'hats';
+
+  // Hide the previously displayed carousel of the same type
+  if (currentType === 'patches') {
+    $('#' + displayedCarousel['patches']).hide();
+  } else {
+    $('#' + displayedCarousel['hats']).hide();
+  }
   
   // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
