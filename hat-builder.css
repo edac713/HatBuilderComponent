@@ -54,9 +54,6 @@
   height: 20px;
 }
 
-
-
-
 /* Hat Builder Carousel Container */
 .hat-builder-carousel-container {
   display: block;
@@ -115,11 +112,6 @@
 .hat-carousels>div .slick-slide {
   margin: 0 50px;
 }
-
-
-
-
-
 
 /* Play Pause Icon */
 #playPauseIcon {
