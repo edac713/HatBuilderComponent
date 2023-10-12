@@ -42,10 +42,13 @@
 }
 
 .hat-builder-right-heading {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: var(--hat-builder-text-color);
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: var(--hat-builder-text-color);
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+    border-radius: 1rem;
 }
 
 .hat-builder-collection-icon {
