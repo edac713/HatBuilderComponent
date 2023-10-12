@@ -21,28 +21,223 @@
 
   <!-- Tabs to switch between patches and hats -->
   <div class="toggle-section">
-
     <div class="toggle-container">
-
-      <!-- Tabs -->
-
+      <!-- Existing Tabs -->
       <div class="toggle-button active" id="patchesToggle">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/D238D762-E827-4BE8-BF0F-1BEB9A99CDA9.png?v=1696605239"
-          alt="Patch Icon" width="20" height="20" style="margin-right: 8px;">Patches
+        <img src="patch-icon.png" alt="Patch Icon" width="20" height="20" style="margin-right: 8px;">Patches
       </div>
       <div class="toggle-button" id="hatsToggle">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/34FBE93F-4A92-4E89-A068-7CBC5D1F4ECC.png?v=1696605239"
-          alt="Hat Icon" width="26" height="26" style="margin-right: 8px;">Hats
+        <img src="hat-icon.png" alt="Hat Icon" width="26" height="26" style="margin-right: 8px;">Hats
       </div>
-
       <!-- Active state background -->
       <div class="active-background"> </div>
-
     </div>
 
+    <!-- New Patch Drop-Down Menu -->
+    <div id="patchDropDown" class="hatBuilderDropDown">
+      <!-- Patch Collection List -->
+      <div id="patchCollectionList" class="hatBuilderCollectionList">
+        <!-- Collection Card 1: All Patches -->
+        <div class="hatBuilderCollectionCard" id="patches-all-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">All Patches</h3>
+            <p class="hatBuilderCardCount">100 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="all-patches-image.jpg" alt="All Patches Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 2: Nascar Drivers & Teams -->
+        <div class="hatBuilderCollectionCard" id="patches-nascar-drivers-teams-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Nascar Drivers & Teams</h3>
+            <p class="hatBuilderCardCount">40 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="nascar-drivers-teams-image.jpg" alt="Nascar Drivers & Teams Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 3: Speedways Racing Series -->
+        <div class="hatBuilderCollectionCard" id="patches-speedways-racing-series-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Speedways Racing Series</h3>
+            <p class="hatBuilderCardCount">30 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="speedways-racing-series-image.jpg" alt="Speedways Racing Series Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 4: Ag Farming -->
+        <div class="hatBuilderCollectionCard" id="patches-ag-farming-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Ag Farming</h3>
+            <p class="hatBuilderCardCount">25 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="ag-farming-image.jpg" alt="Ag Farming Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 5: Beer Liquor -->
+        <div class="hatBuilderCollectionCard" id="patches-beer-liquor-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Beer & Liquor</h3>
+            <p class="hatBuilderCardCount">35 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="beer-liquor-image.jpg" alt="Beer & Liquor Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 6: Car Truck Brands -->
+        <div class="hatBuilderCollectionCard" id="patches-car-truck-brands-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Car & Truck Brands</h3>
+            <p class="hatBuilderCardCount">50 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="car-truck-brands-image.jpg" alt="Car & Truck Brands Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 7: Racing Brands -->
+        <div class="hatBuilderCollectionCard" id="patches-racing-brands-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Racing Brands</h3>
+            <p class="hatBuilderCardCount">45 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="racing-brands-image.jpg" alt="Racing Brands Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 8: Diesel -->
+        <div class="hatBuilderCollectionCard" id="patches-diesel-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Diesel</h3>
+            <p class="hatBuilderCardCount">20 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="diesel-image.jpg" alt="Diesel Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 9: Drag Racing -->
+        <div class="hatBuilderCollectionCard" id="patches-drag-racing-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Drag Racing</h3>
+            <p class="hatBuilderCardCount">15 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="drag-racing-image.jpg" alt="Drag Racing Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 10: Hunting Fishing Guns -->
+        <div class="hatBuilderCollectionCard" id="patches-hunting-fishing-guns-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Hunting, Fishing & Guns</h3>
+            <p class="hatBuilderCardCount">30 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="hunting-fishing-guns-image.jpg" alt="Hunting, Fishing & Guns Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 11: Motorcycle Brands -->
+        <div class="hatBuilderCollectionCard" id="patches-motorcycle-brands-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Motorcycle Brands</h3>
+            <p class="hatBuilderCardCount">25 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="motorcycle-brands-image.jpg" alt="Motorcycle Brands Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 12: National Parks -->
+        <div class="hatBuilderCollectionCard" id="patches-national-parks-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">National Parks</h3>
+            <p class="hatBuilderCardCount">18 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="national-parks-image.jpg" alt="National Parks Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 13: Miscellaneous -->
+        <div class="hatBuilderCollectionCard" id="patches-miscellaneous-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Miscellaneous</h3>
+            <p class="hatBuilderCardCount">18 patches</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="miscellaneous-image.jpg" alt="Miscellaneous Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Hat Drop-Down Menu -->
+    <div id="hatDropDown" class="hatBuilderDropDown">
+      <!-- Hat Collection List -->
+      <div id="hatCollectionList" class="hatBuilderCollectionList">
+        <!-- Collection Card 1: All Hats -->
+        <div class="hatBuilderCollectionCard" id="hats-all-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">All Hats</h3>
+            <p class="hatBuilderCardCount">50 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="all-hats-image.jpg" alt="All Hats Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 2: Richardson -->
+        <div class="hatBuilderCollectionCard" id="hats-richardson-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Richardson</h3>
+            <p class="hatBuilderCardCount">20 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="richardson-image.jpg" alt="Richardson Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 3: Imperial -->
+        <div class="hatBuilderCollectionCard" id="hats-imperial-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Imperial</h3>
+            <p class="hatBuilderCardCount">15 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="imperial-image.jpg" alt="Imperial Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 4: Yupoong -->
+        <div class="hatBuilderCollectionCard" id="hats-yupoong-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Yupoong</h3>
+            <p class="hatBuilderCardCount">18 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="yupoong-image.jpg" alt="Yupoong Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 5: Pacific -->
+        <div class="hatBuilderCollectionCard" id="hats-pacific-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Pacific</h3>
+            <p class="hatBuilderCardCount">12 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="pacific-image.jpg" alt="Pacific Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+        <!-- Collection Card 6: Flexfit -->
+        <div class="hatBuilderCollectionCard" id="hats-flexfit-carousel">
+          <div class="hatBuilderCardLeft">
+            <h3 class="hatBuilderCardTitle">Flexfit</h3>
+            <p class="hatBuilderCardCount">10 hats</p>
+          </div>
+          <div class="hatBuilderCardRight">
+            <img src="flexfit-image.jpg" alt="Flexfit Image" class="hatBuilderCardImage">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
     <div class="hat-builder-collection-label-container">
       <span class="hat-builder-collection-icon">
