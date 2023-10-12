@@ -64,7 +64,7 @@
   width: 100%;
   background-color: #fff;
   z-index: 1;
-  top: calc(100% + 16px);  /* Add this line */
+  top: calc(100% + 16px);  /* 16px gap from the bottom of .toggle-section */
 }
 
 /* Collection List */
