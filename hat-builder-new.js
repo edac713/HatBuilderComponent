@@ -214,4 +214,12 @@ $(document).ready(function () {
       $('.hat-carousels > div').slick('slickPlay');
     }
   });
+  
+  // Scroll to Hat Builder functionality
+  $('#scrollButton').on('click', function() {  // Corrected the ID to use the dash-case
+      const targetScroll = $(".hat-builder-container").offset().top;
+      $('html, body').animate({
+          scrollTop: targetScroll
+      }, 1000);
+  });
 });
