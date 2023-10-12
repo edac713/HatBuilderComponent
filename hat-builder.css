@@ -12,7 +12,7 @@
 
 .hat-builder-container {
   max-width: 100%;
-  height: 350px;
+  height: 400px;
   background-color: var(--hat-builder-main-bg-color);
   position: relative;
   display: flex;
@@ -21,34 +21,34 @@
   border-radius: 40px;
   z-index: var(--zindex-hat-builder);
   overflow: hidden;
+  flex-direction: column;
 }
 
 /* Hat Builder Header */
 .hat-builder-header {
-  position: absolute;
+  position: relative;
   display: flex;
-  top: 20px;
-  left: 30px;
-  right: 30px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  padding-top: 25px;
 }
 
-.hat-builder-left-heading {
-  text-align: left;
+.hat-builder-heading {
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
   color: var(--hat-builder-text-color);
 }
 
-.hat-builder-right-heading {
-    display: flex;
-    align-items: center;
-    font-size: 13px;
+.hat-builder-collection-label-container {
+    position: relative;
+  display: flex;
+  align-items: center;
+    font-size: 14px;
     color: var(--hat-builder-text-color);
     padding: 5px 10px 5px 10px;
-    background-color: white;
     border-radius: 1rem;
+  margin-top: 10px;
 }
 
 .hat-builder-collection-icon {
@@ -66,6 +66,7 @@
   justify-content: center;
   align-items: center;
   overflow: visible;
+  margin-top: 10px;
 }
 
 /* Patch Carousels */
@@ -133,7 +134,7 @@
   position: relative;
   width: 100%;
   height: 55px;
-  margin-top: 10px;
+  margin-top: 16px;
   padding-left: 16px;
   padding-right: 16px;
   z-index: 0;
