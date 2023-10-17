@@ -12,15 +12,14 @@
 
 .hat-builder-container {
   max-width: 100%;
-  height: 400px;
+  height: 150px;
   background-color: var(--hat-builder-main-bg-color);
   position: relative;
-  display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 0px;
   border-radius: 40px;
   z-index: var(--zindex-hat-builder);
-  overflow: hidden;
   flex-direction: column;
 }
 
@@ -41,13 +40,13 @@
 }
 
 .hat-builder-collection-label-container {
-    position: relative;
+  position: relative;
   display: flex;
   align-items: center;
-    font-size: 14px;
-    color: var(--hat-builder-text-color);
-    padding: 5px 10px 5px 10px;
-    border-radius: 1rem;
+  font-size: 14px;
+  color: var(--hat-builder-text-color);
+  padding: 5px 10px 5px 10px;
+  border-radius: 1rem;
   margin-top: 10px;
 }
 
@@ -55,73 +54,6 @@
   margin-right: 5px;
   width: 20px;
   height: 20px;
-}
-
-/* Drop-Down Menu */
-.hatBuilderDropDown {
-  display: none;
-  position: absolute;
-  width: 100%;
-  background-color: #fff;
-  z-index: 1;
-  top: calc(100% + 16px);  /* 16px gap from the bottom of .toggle-section */
-}
-
-/* Collection List */
-.hatBuilderCollectionList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  height: fit-content;  /* Add this line */
-}
-
-/* Collection Card */
-.hatBuilderCollectionCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 140px;  /* Updated height */
-  width: calc(100% - 32px);  /* New width */
-  padding: 0 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-left: 16px;  /* New margin */
-  margin-right: 16px;  /* New margin */
-}
-
-/* Left Side of Collection Card */
-.hatBuilderCardLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-/* Right Side of Collection Card */
-.hatBuilderCardRight {
-  display: flex;
-  align-items: center;
-}
-
-/* Collection Card Title */
-.hatBuilderCardTitle {
-  font-size: 16px;
-  margin-left: 12px;
-}
-
-/* Collection Card Count */
-.hatBuilderCardCount {
-  font-size: 14px;
-  color: #888;
-  margin-left: 12px;
-}
-
-/* Collection Card Image */
-.hatBuilderCardImage {
-  width: auto;
-  height: 100%;
-  margin-right: 12px;
 }
 
 /* Hat Builder Carousel Container */
@@ -255,4 +187,67 @@
 
 .toggle-button.active {
   color: #161616;
+}
+
+
+/* Patch & Hat Drop Down Menus */
+.hatBuilderDropDown {
+  position: absolute;
+  padding-top: 1rem;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+}
+
+#patchDropDown {
+  display: flex;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  z-index: 15;
+}
+
+#hatDropDown {
+  display: flex;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  z-index: 15;
+}
+
+.hatBuilderCollectionList {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  width: auto;
+  height: fit-content;
+  background-color: #e3e2dea6;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: solid red 1px;
+  border-radius: 15px;
+  z-index: 15;
+}
+
+.hatBuilderCollectionCard {
+  font-family: sans-serif;
+  padding: 20px;
+  display: flex;
+  width: auto;
+  height: 125px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hatBuilderCardImage {
+  display: flex;
+  position: relative;
+  width: 100px;
+  height: auto;
 }
