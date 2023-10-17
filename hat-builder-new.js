@@ -127,36 +127,6 @@ function updateHatBuilderHeader() {
   $('.hat-builder-collection-label').text(label);
 }
 
-// Function to toggle drop-down menu
-function toggleDropDown(toggleId, dropDownId) {
-  const toggleButton = document.getElementById(toggleId);
-  const dropDownMenu = document.getElementById(dropDownId);
-
-  toggleButton.addEventListener('click', function() {
-    if (dropDownMenu.style.display === 'none' || dropDownMenu.style.display === '') {
-      dropDownMenu.style.display = 'block';
-    } else {
-      dropDownMenu.style.display = 'none';
-    }
-  });
-}
-
-// Function to link collection cards to carousels
-function linkCollectionToCarousel(collectionListId) {
-  const collectionList = document.getElementById(collectionListId);
-  const collectionCards = collectionList.querySelectorAll('.hatBuilderCollectionCard');
-
-  collectionCards.forEach(card => {
-    card.addEventListener('click', function() {
-      const carouselId = collectionToCarouselMap[card.id];
-      const carousel = document.getElementById(carouselId);
-
-      // Integrate existing code to display the carousel
-      showCarousel(carouselId);  // This is the existing function that shows the carousel
-    });
-  });
-}
-
 $(document).ready(function () {
   $(".collection-list__item").on("click", function (event) {
     handleCollectionClick(event, $(this));
@@ -252,10 +222,4 @@ $(document).ready(function () {
           scrollTop: targetScroll
       }, 1000);
   });
-    // New initialization code
-  toggleDropDown('patchesToggle', 'patchDropDown');
-  toggleDropDown('hatsToggle', 'hatDropDown');
-  linkCollectionToCarousel('patchCollectionList');
-  linkCollectionToCarousel('hatCollectionList');
-});
 });
