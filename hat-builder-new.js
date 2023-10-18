@@ -79,11 +79,11 @@ $('#patchesToggle, #hatsToggle').on('click', function () {
 // Additional functions from hat-builder-old.js
 function setInitialCategoryDisplay() {
   if ($('#patchesToggle').hasClass('active')) {
-    $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
-    $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
+    $('#patchCollectionList').show();
+    $('#hatCollectionList').hide();
   } else {
-    $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').hide();
-    $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').show();
+    $('#patchCollectionList').hide();
+    $('#hatCollectionList').show();
   }
 }
 
@@ -147,9 +147,9 @@ $(".hatBuilderCollectionCard").on("click", function () {
     }
   });
 
-  // Set initial visibility
-  $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
-  $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
+// Set initial visibility
+$('#patchCollectionList').show();
+$('#hatCollectionList').hide();
 
   // Handle toggle click event for switching carousels
   $('#patchesToggle, #hatsToggle').on('click', function () {
