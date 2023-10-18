@@ -13,91 +13,46 @@ const collectionToCarouselMap = {
   "patches-motorcycle-brands": "patches-motorcycle-brands-carousel",
   "patches-national-parks": "patches-national-parks-carousel",
   "patches-miscellaneous": "patches-miscellaneous-carousel",
-  //...other patch collections
   "hats": "hats-all-carousel",
   "richardson": "hats-richardson-carousel",
   "imperial": "hats-imperial-carousel",
   "yupoong": "hats-yupoong-carousel",
   "pacific": "hats-pacific-carousel",
   "flexfit": "hats-flexfit-carousel"
-  //...other hat collections
 };
 
-// Show target carousel, hide others of the same type
 function showCarousel(carouselId) {
-  if (carouselId.includes("patches")) {
-    $(".patch-carousel").hide();
-  } else {
-    $(".hat-carousel").hide();
-  }
+  $(".patch-carousel, .hat-carousel").hide();
   $("#" + carouselId).show();
 }
 
-let activeToggle = 'patches'; // Default active toggle
-
-// Separate variables to keep track of the currently displayed carousel for patches and hats
 let displayedPatchCarousel = null;
 let displayedHatCarousel = null;
-
 let isDropDownOpen = false;
 
 function handleCollectionClick(event, clickedElement) {
   event.preventDefault();
-
-  // Get the collection name from the clicked element
-  const collectionName = clickedElement.data("collection-name");
-
-  // New code to format and update the label
-  let displayLabel = collectionName.replace("patches-", "").replace("hats-", "");
-  displayLabel = displayLabel.replace(/-/g, ' ');
-  displayLabel = displayLabel.replace(/\b\w/g, function (char) {
-    return char.toUpperCase();
-  });
-  $('.hat-builder-collection-label').text(displayLabel);
-
-
-  // Log for debugging
-  console.log("Clicked collection:", collectionName);
-
-  // Get the corresponding carousel ID from the map
+  const collectionName = clickedElement.attr("id");
   const carouselId = collectionToCarouselMap[collectionName];
-
-  // Handle undefined carouselId
-  if (!carouselId) {
-    console.log("No carousel mapped for this collection");
-    return;
-  }
-
-  // Log for debugging
-  console.log("Carousel to show:", carouselId);
-
-  // Determine the type of the current collection (either 'patches' or 'hats')
+  if (!carouselId) return;
   const currentType = collectionName.startsWith('patches') ? 'patches' : 'hats';
-
-  // Hide the previously displayed carousel of the same type
   if (currentType === 'patches') {
-    // Hide the "patches-all" carousel
     $('#patches-all-carousel').hide();
-    if (displayedPatchCarousel) {
-      $('#' + displayedPatchCarousel).hide();
-    }
+    if (displayedPatchCarousel) $('#' + displayedPatchCarousel).hide();
     displayedPatchCarousel = carouselId;
   } else {
-    // Hide the "hats-all" carousel
     $('#hats-all-carousel').hide();
-    if (displayedHatCarousel) {
-      $('#' + displayedHatCarousel).hide();
-    }
+    if (displayedHatCarousel) $('#' + displayedHatCarousel).hide();
     displayedHatCarousel = carouselId;
   }
-
-  // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
-  
-  // Close the drop-down menu after selection
   $(".hatBuilderDropDown").hide();
   isDropDownOpen = false;
 }
+
+$(".hatBuilderCollectionCard").on("click", function (event) {
+  handleCollectionClick(event, $(this));
+});
 
 $('#patchesToggle, #hatsToggle').on('click', function () {
   // Remove 'active' class from both toggles
@@ -231,7 +186,7 @@ $(document).ready(function () {
   });
   
   // Scroll to Hat Builder functionality
-  $('#scrollButton').on('click', function() {  // Corrected the ID to use the dash-case
+  $('#scrollButton').on('click', function() {
       const targetScroll = $(".hat-builder-container").offset().top;
       $('html, body').animate({
           scrollTop: targetScroll
