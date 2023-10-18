@@ -50,10 +50,6 @@ function handleCollectionClick(event, clickedElement) {
   isDropDownOpen = false;
 }
 
-$(".hatBuilderCollectionCard").on("click", function (event) {
-  handleCollectionClick(event, $(this));
-});
-
 $('#patchesToggle, #hatsToggle').on('click', function () {
   // Remove 'active' class from both toggles
   $('#patchesToggle, #hatsToggle').removeClass('active');
@@ -98,9 +94,11 @@ function updateHatBuilderHeader() {
 }
 
 $(document).ready(function () {
-  $(".collection-list__item").on("click", function (event) {
-    handleCollectionClick(event, $(this));
-  });
+// Event listener for new collection cards in drop-downs
+$(".hatBuilderCollectionCard").on("click", function () {
+  const collectionName = $(this).attr("id");
+  handleCollectionClick(collectionName);
+});
 
   // Initialize patch carousels
   $(".patch-carousels > div").slick({
