@@ -46,7 +46,7 @@ function handleCollectionClick(event, clickedElement) {
     displayedHatCarousel = carouselId;
   }
   $('#' + carouselId).show().find('div').show();
-  $(".hatBuilderDropDown").hide();
+  $("hatBuilderCollectionList").hide();
   isDropDownOpen = false;
 }
 
@@ -61,31 +61,17 @@ $('#patchesToggle, #hatsToggle').on('click', function () {
   activeToggle = $(this).attr('id').replace('Toggle', '');
 
   // Hide both collection lists
-  $('.collection-list').hide();
-
-  // Show the collection list corresponding to the active toggle
-  $(`#shopify-section-template--14833441800262__${activeToggle}`).show();
+  $('hatBuilderCollectionList').hide();
 
   // Open or close the drop-down based on the current state
   if (isDropDownOpen && activeToggle === $(this).attr('id').replace('Toggle', '')) {
-    $(".hatBuilderDropDown").hide();
+    $("hatBuilderCollectionList").hide();
     isDropDownOpen = false;
   } else {
-    $(".hatBuilderDropDown").show();
+    $("hatBuilderCollectionList").show();
     isDropDownOpen = true;
   }
 });
-
-// Additional functions from hat-builder-old.js
-function setInitialCategoryDisplay() {
-  if ($('#patchesToggle').hasClass('active')) {
-    $('#patchCollectionList').show();
-    $('#hatCollectionList').hide();
-  } else {
-    $('#patchCollectionList').hide();
-    $('#hatCollectionList').show();
-  }
-}
 
 function updateHatBuilderHeader() {
   const isPatchesActive = $('#patchesToggle').hasClass('active');
@@ -148,7 +134,7 @@ $(".hatBuilderCollectionCard").on("click", function () {
   });
 
 // Set initial visibility
-$('#patchCollectionList').show();
+$('#patchCollectionList').hide();
 $('#hatCollectionList').hide();
 
   // Handle toggle click event for switching carousels
@@ -162,12 +148,12 @@ $('#hatCollectionList').hide();
 
     if ($('#hatsToggle').hasClass('active')) {
       $('.active-background').css('left', '49%');
-      $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').hide();
-      $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').show();
+      $('#patchCollectionList').hide();
+      $('#hatCollectionList').show();
     } else {
       $('.active-background').css('left', '1%');
-      $('#shopify-section-template--14833441800262__e617045b-0ee9-4ffa-a5a4-a21a2ccd0cf6 .collection-list').hide();
-      $('#shopify-section-template--14833441800262__81fbde0d-26af-45a0-bc7b-b0514d8bd082 .collection-list').show();
+      $('#hatCollectionList').hide();
+      $('#patchCollectionList').show();
     }
 
     // Determine which toggle is active
@@ -188,12 +174,12 @@ $('#hatCollectionList').hide();
       const targetScroll = $(".hat-builder-container").offset().top;
       $('html, body').animate({
           scrollTop: targetScroll
-      }, 1000);
+      }, 500);
   });
   
   // Close the drop-down when a collection card is clicked
   $(".hatBuilderCollectionCard").on("click", function () {
-    $(".hatBuilderDropDown").hide();
+    $("hatBuilderCollectionList").hide();
     isDropDownOpen = false;
   });
 });
