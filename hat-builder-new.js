@@ -39,6 +39,8 @@ let activeToggle = 'patches'; // Default active toggle
 let displayedPatchCarousel = null;
 let displayedHatCarousel = null;
 
+let isDropDownOpen = false;
+
 function handleCollectionClick(event, clickedElement) {
   event.preventDefault();
 
@@ -91,6 +93,10 @@ function handleCollectionClick(event, clickedElement) {
 
   // Show the new corresponding carousel and its child elements
   $('#' + carouselId).show().find('div').show();
+  
+  // Close the drop-down menu after selection
+  $(".hatBuilderDropDown").hide();
+  isDropDownOpen = false;
 }
 
 $('#patchesToggle, #hatsToggle').on('click', function () {
@@ -108,6 +114,15 @@ $('#patchesToggle, #hatsToggle').on('click', function () {
 
   // Show the collection list corresponding to the active toggle
   $(`#shopify-section-template--14833441800262__${activeToggle}`).show();
+
+  // Open or close the drop-down based on the current state
+  if (isDropDownOpen && activeToggle === $(this).attr('id').replace('Toggle', '')) {
+    $(".hatBuilderDropDown").hide();
+    isDropDownOpen = false;
+  } else {
+    $(".hatBuilderDropDown").show();
+    isDropDownOpen = true;
+  }
 });
 
 // Additional functions from hat-builder-old.js
@@ -221,5 +236,11 @@ $(document).ready(function () {
       $('html, body').animate({
           scrollTop: targetScroll
       }, 1000);
+  });
+  
+  // Close the drop-down when a collection card is clicked
+  $(".hatBuilderCollectionCard").on("click", function () {
+    $(".hatBuilderDropDown").hide();
+    isDropDownOpen = false;
   });
 });
