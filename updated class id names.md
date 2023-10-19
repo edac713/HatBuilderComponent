@@ -1,6 +1,6 @@
 ## Class and ID Names for Hat Builder Component
 
-### Original -> Updated
+### Original (class/id names ussd in original 'hat-builder.html' file) -> Updated
 
 #### Class Names
 - `hat-builder-container` (unchanged)
