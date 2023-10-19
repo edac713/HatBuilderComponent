@@ -1,6 +1,6 @@
 ## Class and ID Names for Hat Builder Component
 
-### Original vs. Updated
+### Original -> Updated
 
 #### Class Names
 - `hat-builder-container` (unchanged)
