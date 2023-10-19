@@ -1,0 +1,26 @@
+<!-- Include CSS Files -->
+{{ 'hat-builder-main.css' | asset_url | stylesheet_tag }}
+{{ 'hat-builder-header.css' | asset_url | stylesheet_tag }}
+{{ 'hat-builder-toggle.css' | asset_url | stylesheet_tag }}
+{{ 'hat-builder-dropdown.css' | asset_url | stylesheet_tag }}
+{{ 'hat-builder-carousel.css' | asset_url | stylesheet_tag }}
+{{ 'hat-builder-footer.css' | asset_url | stylesheet_tag }}
+
+<!-- Include JavaScript File -->
+<script src="{{ 'hat-builder-main.js' | asset_url }}" async></script>
+
+<!-- HTML Structure -->
+<!-- Render Header Section -->
+{% render 'hat-builder-header' %}
+
+<!-- Render Toggle Buttons for Patches and Hats -->
+{% render 'hat-builder-toggle' %}
+
+<!-- Render Drop-down Menus for Patches and Hats -->
+{% render 'hat-builder-dropdown' %}
+
+<!-- Render Carousel Section -->
+{% render 'hat-builder-carousel' %}
+
+<!-- Render Footer Section -->
+{% render 'hat-builder-footer' %}
