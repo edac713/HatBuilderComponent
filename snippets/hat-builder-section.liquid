@@ -1,4 +1,4 @@
-<!-- Load jQuery -->
+<!-- Load jQuery and Slick Carousel -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
 
@@ -17,17 +17,19 @@
 <script src="{{ 'hat-builder-main.js' | asset_url }}" async></script>
 
 <!-- HTML Structure -->
-<!-- Render Header Section -->
-{% render 'hat-builder-header' %}
+<div class="hat-builder-container">
+  <!-- Render Header Section -->
+  {% render 'hat-builder-header' %}
 
-<!-- Render Toggle Buttons for Patches and Hats -->
-{% render 'hat-builder-toggle' %}
+  <!-- Render Toggle Buttons for Patches and Hats -->
+  {% render 'hat-builder-toggle' %}
 
-<!-- Render Drop-down Menus for Patches and Hats -->
-{% render 'hat-builder-dropdown' %}
+  <!-- Render Drop-down Menus for Patches and Hats -->
+  {% render 'hat-builder-dropdown' %}
 
-<!-- Render Carousel Section -->
-{% render 'hat-builder-carousel' %}
+  <!-- Render Carousel Section -->
+  {% render 'hat-builder-carousel' %}
 
-<!-- Render Footer Section -->
-{% render 'hat-builder-footer' %}
+  <!-- Render Footer Section -->
+  {% render 'hat-builder-footer' %}
+</div>
