@@ -1,3 +1,4 @@
+/* Hat Builder Carousel Container */
 .hat-builder-carousel-container {
   display: block;
   position: relative;
@@ -9,7 +10,8 @@
   margin-top: 10px;
 }
 
-.hat-builder-patch-carousels>div {
+/* Patch Carousels */
+.patch-carousels>div {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -20,7 +22,20 @@
   opacity: 1;
 }
 
-.hat-builder-hat-carousels>div {
+.patch-carousels>div img {
+  max-width: 12rem;
+  max-height: 12rem;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styling for the slick-slide to add more space between the patches */
+.patch-carousels>div .slick-slide {
+  margin: 0 50px;
+}
+
+/* Hat Carousels */
+.hat-carousels>div {
   position: absolute;
   top: 54%;
   left: 50%;
@@ -31,3 +46,14 @@
   opacity: 1;
 }
 
+.hat-carousels>div img {
+  max-width: 21rem;
+  max-height: 21rem;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Styling for the slick-slide to add more space between the hats */
+.hat-carousels>div .slick-slide {
+  margin: 0 50px;
+}
