@@ -1,6 +1,7 @@
 .hat-builder-collection-label-container {
   position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 14px;
   color: var(--hat-builder-text-color);
