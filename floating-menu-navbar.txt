@@ -1,1 +1,513 @@
-hello
+```CSS
+<style>
+  /* Base styles for floating menu */
+  .floating-menu, .floating-menu-section {
+    font-family: sans-serif;
+    background-color: rgba(26, 26, 26, 0.725);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    width: 300px;
+    height: 67px;
+    z-index: 110 !important;
+    position: fixed;
+    bottom: 21px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 22px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 7px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Icon styles */
+  .floating-menu a, .floating-menu svg, .cart-count-bubble {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Styles for the menu toggle */
+  #checkbox {
+    display: none;
+  }
+  
+  .toggle {
+    position: relative;
+    width: 24px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    height: calc(3px * 3 + 8px * 2);
+  }
+  
+  .bar {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: calc(3px / 2);
+    background: #FFFFFF;
+    transition: none 0.35s cubic-bezier(.5, -0.35, .35, 1.5) 0s;
+  }
+  
+  .bar--top {
+    bottom: calc(50% + 6px + 3px / 2);
+    transition-property: bottom, transform;
+    transition-delay: calc(0s + 0.35s * .6);
+  }
+  
+  .bar--middle {
+    top: calc(50% - 3px / 2);
+    transition-property: opacity, transform;
+    transition-delay: calc(0s + 0.35s * .3);
+  }
+  
+  .bar--bottom {
+    top: calc(50% + 6px + 3px / 2);
+    transition-property: top, transform;
+    transition-delay: 0s;
+  }
+  
+  #checkbox:checked + .toggle .bar--top {
+    transform: rotate(-135deg);
+    bottom: calc(50% - 3px / 2);
+  }
+  
+  #checkbox:checked + .toggle .bar--middle {
+    opacity: 0;
+    transform: rotate(-135deg);
+  }
+  
+  #checkbox:checked + .toggle .bar--bottom {
+    top: calc(50% - 3px / 2);
+    transform: rotate(-225deg);
+  }
+
+  /* Cart icon styles */
+  .custom-cart-icon {
+    position: relative;
+  }
+
+  .cart-count-bubble {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #f84c43;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+  }
+
+  .icon-container {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    position: relative;
+  }
+
+  .icon-container.selected {}
+
+  .icon-container.selected svg path {
+    fill: #FFFFFF !important;
+  }
+
+  #home-icon-container.selected svg path {
+    stroke: #FFFFFF !important;
+  }
+
+  /* Search bar styles */
+  .search-bar-container {
+    position: fixed;
+    bottom: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    border-radius: 50px;
+    border-color: rgba(68, 68, 68, 0.5) !important;
+    border-width: 2px;
+    border-style: solid;
+  }
+  
+  .search-bar-container.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #search-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.75);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    font-size: calc(44px * 0.5);
+    color: #000000;
+    border-radius: 50px;
+  }
+
+  /* Empty and filled cart icon styles */
+  #empty-cart-icon, #filled-cart-icon {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  /* Animated dot styles */
+  .dot {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .show-dot .dot {
+    opacity: 1;
+  }
+
+/* Additional Menu styles */
+#additional-menu {
+    position: fixed;
+    bottom: 95px;
+    left: 50%;  /* Centered horizontally */
+    transform: translateX(-50%) translateY(100%);  /* Starts hidden below the viewport */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.3s;  /* Adjusted transition */
+    height: auto;
+    width: 300px;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 -7px 20px rgba(0, 0, 0, 0.2);  /* Shadow on top */
+    opacity: 0;
+    visibility: hidden;
+    color: #FFFFFF;
+    border: 1px solid #D3D3D3;  /* Light gray border */
+}
+
+#additional-menu.show {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);  /* Ends at the initial position */
+    background-color: rgba(26, 26, 26, 0.75);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
+    font-size: calc(44px * 0.5);
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s;  /* Adjusted transition */
+}
+
+#additional-menu a, #additional-menu.show a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#additional-menu ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px; /* Adjust padding as needed */
+}
+
+.menu-text {
+    display: block;
+}
+
+.chevron {
+    display: inline-block;
+    width: 24px; /* Adjust width as needed */
+    height: 24px; /* Adjust height as needed */
+}
+
+.chevron svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#additional-menu ul {
+    list-style-type: none !important;
+    padding: 0; /* Removes padding */
+    margin: 0; /* Removes margin */
+}
+
+</style>
+```
+
+
+
+
+
+```HTML
+<!-- Floating Menu Section -->
+<div id="floating-menu-section">
+
+  <div class="search-bar-container" id="search-bar-container">
+      <input type="text" id="search-input" placeholder="Search...">
+  </div>
+
+<!-- Additional Menu -->
+<div id="additional-menu">
+    <ul>
+        <li>
+            <a href="https://gearheadhats.com/collections/patches">
+                <span class="menu-text">Patches</span>
+                <span class="chevron">
+                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M32.6688 8.69054L17.1124 8.69054C15.8959 8.69054 14.9127 9.6737 14.9127 10.8902C14.9127 12.1067 15.8959 13.0899 17.1124 13.0899L27.3578 13.0899L9.33423 31.1135C8.47396 31.9737 8.47552 33.366 9.33423 34.2247C10.1929 35.0834 11.5852 35.085 12.4455 34.2247L30.4691 16.2011L30.4691 26.4466C30.4691 27.6631 31.4522 28.6462 32.6688 28.6462C33.2754 28.6462 33.8261 28.4004 34.2244 28.0022C34.6226 27.604 34.8684 27.0533 34.8684 26.4466L34.8684 10.8902C34.8684 9.6737 33.8853 8.69054 32.6688 8.69054Z" fill="white"/>
+                  </svg>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="https://gearheadhats.com/collections/hats">
+                <span class="menu-text">Hats</span>
+                <span class="chevron">
+                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M32.6688 8.69054L17.1124 8.69054C15.8959 8.69054 14.9127 9.6737 14.9127 10.8902C14.9127 12.1067 15.8959 13.0899 17.1124 13.0899L27.3578 13.0899L9.33423 31.1135C8.47396 31.9737 8.47552 33.366 9.33423 34.2247C10.1929 35.0834 11.5852 35.085 12.4455 34.2247L30.4691 16.2011L30.4691 26.4466C30.4691 27.6631 31.4522 28.6462 32.6688 28.6462C33.2754 28.6462 33.8261 28.4004 34.2244 28.0022C34.6226 27.604 34.8684 27.0533 34.8684 26.4466L34.8684 10.8902C34.8684 9.6737 33.8853 8.69054 32.6688 8.69054Z" fill="white"/>
+                  </svg>
+                </span>
+            </a>
+        </li>
+        <!-- New Link -->
+        <li>
+            <a href="https://gearheadhats.com/collections/ready-made">
+                <span class="menu-text">Ready Made</span>
+                <span class="chevron">
+                  <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M32.6688 8.69054L17.1124 8.69054C15.8959 8.69054 14.9127 9.6737 14.9127 10.8902C14.9127 12.1067 15.8959 13.0899 17.1124 13.0899L27.3578 13.0899L9.33423 31.1135C8.47396 31.9737 8.47552 33.366 9.33423 34.2247C10.1929 35.0834 11.5852 35.085 12.4455 34.2247L30.4691 16.2011L30.4691 26.4466C30.4691 27.6631 31.4522 28.6462 32.6688 28.6462C33.2754 28.6462 33.8261 28.4004 34.2244 28.0022C34.6226 27.604 34.8684 27.0533 34.8684 26.4466L34.8684 10.8902C34.8684 9.6737 33.8853 8.69054 32.6688 8.69054Z" fill="white"/>
+                  </svg>
+                </span>
+            </a>
+        </li>
+        <!-- ...other menu items -->
+    </ul>
+</div>
+
+  <nav class="floating-menu">
+      <!-- ... rest of your existing code ... -->
+  <div class="icon-container" id="home-icon-container">
+    <a href="https://gearheadhats.com">
+      <!-- EMPTY Home Icon -->
+    <svg id="empty-home-icon" "44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.7067 10.2027C22.2743 9.93244 21.7257 9.93244 21.2933 10.2027L11.88 16.086C10.7105 16.817 10 18.0988 10 19.478V31C10 32.6569 11.3431 34 13 34H17C17.5523 34 18 33.5523 18 33V26C18 25.2636 18.597 24.6667 19.3333 24.6667H24.6667C25.403 24.6667 26 25.2636 26 26V33C26 33.5523 26.4477 34 27 34H31C32.6569 34 34 32.6569 34 31V19.478C34 18.0988 33.2895 16.817 32.12 16.086L22.7067 10.2027Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<!-- FILLED Home Icon -->
+    <svg id="filled-home-icon" style="display:none;" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.7067 10.2027C22.2743 9.93244 21.7257 9.93244 21.2933 10.2027L11.88 16.086C10.7105 16.817 10 18.0988 10 19.478V31C10 32.6569 11.3431 34 13 34H17C17.5523 34 18 33.5523 18 33V26C18 25.2636 18.597 24.6667 19.3333 24.6667H24.6667C25.403 24.6667 26 25.2636 26 26V33C26 33.5523 26.4477 34 27 34H31C32.6569 34 34 32.6569 34 31V19.478C34 18.0988 33.2895 16.817 32.12 16.086L22.7067 10.2027Z" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    </a>
+  <div class="dot">&nbsp;</div>
+</div>
+
+<div class="icon-container" id="search-icon-container">
+  <!-- EMPTY Search Icon -->
+      <svg id="empty-search-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12.4 19.6C12.4 15.6292 15.6292 12.4 19.6 12.4C23.5708 12.4 26.8 15.6292 26.8 19.6C26.8 23.5708 23.5708 26.8 19.6 26.8C15.6292 26.8 12.4 23.5708 12.4 19.6ZM33.6484 31.9516L27.1744 25.4764C28.487 23.7988 29.2001 21.7301 29.2 19.6C29.2 14.3068 24.8932 10 19.6 10C14.3068 10 10 14.3068 10 19.6C10 24.8932 14.3068 29.2 19.6 29.2C21.7299 29.1994 23.7985 28.4864 25.4764 27.1744L31.9516 33.6484C32.0628 33.7602 32.195 33.849 32.3406 33.9095C32.4862 33.9701 32.6423 34.0012 32.8 34.0012C32.9577 34.0012 33.1138 33.9701 33.2594 33.9095C33.405 33.849 33.5372 33.7602 33.6484 33.6484C33.7599 33.5371 33.8484 33.4048 33.9088 33.2592C33.9692 33.1137 34.0002 32.9576 34.0002 32.8C34.0002 32.6424 33.9692 32.4863 33.9088 32.3408C33.8484 32.1952 33.7599 32.0629 33.6484 31.9516Z" fill="white" stroke="white" stroke-width="0.5"/>
+      </svg>
+  <!-- FILLED Search Icon -->
+      <svg id="filled-search-icon" style="display:none;" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.6 29.575H19.6001C21.7027 29.5744 23.7477 28.9058 25.442 27.6703L31.6857 33.9128C31.6859 33.9131 31.6862 33.9133 31.6864 33.9136C31.8323 34.0601 32.0057 34.1764 32.1966 34.2558C32.3878 34.3353 32.5929 34.3762 32.8 34.3762C33.0071 34.3762 33.2122 34.3353 33.4034 34.2558C33.5943 34.1764 33.7676 34.0601 33.9135 33.9136C34.0599 33.7675 34.176 33.5939 34.2552 33.4029C34.3344 33.2118 34.3752 33.0069 34.3752 32.8C34.3752 32.5931 34.3344 32.3882 34.2552 32.1971C34.1759 32.006 34.0598 31.8324 33.9134 31.6862C33.9134 31.6862 33.9133 31.6862 33.9133 31.6862L27.6703 25.4421C28.9065 23.7481 29.5751 21.7028 29.575 19.6C29.575 14.0997 25.1003 9.625 19.6 9.625C14.0997 9.625 9.625 14.0997 9.625 19.6C9.625 25.1003 14.0997 29.575 19.6 29.575ZM12.775 19.6C12.775 15.8363 15.8363 12.775 19.6 12.775C23.3637 12.775 26.425 15.8363 26.425 19.6C26.425 23.3637 23.3637 26.425 19.6 26.425C15.8363 26.425 12.775 23.3637 12.775 19.6Z" fill="white" stroke="white" stroke-width="0.75"/>
+      </svg>
+  <div class="dot">&nbsp;</div>    
+</div>
+
+<div class="icon-container" id="cart-icon-container">
+  <a href="/cart">
+      <!-- EMPTY Cart Icon -->
+          <svg id="empty-cart-icon" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M8 10.275C8 9.93685 8.13433 9.61255 8.37344 9.37344C8.61255 9.13433 8.93685 9 9.275 9H12.0154C12.7308 9.00002 13.4222 9.25781 13.9629 9.72614C14.5037 10.1945 14.8576 10.842 14.9598 11.55H31.375C31.5508 11.5499 31.7247 11.5862 31.8858 11.6566C32.0468 11.7269 32.1916 11.8299 32.3111 11.9588C32.4305 12.0878 32.5219 12.2401 32.5797 12.4062C32.6374 12.5722 32.6602 12.7483 32.6466 12.9236L32.038 20.8337C31.9476 22.0081 31.4173 23.105 30.5531 23.9053C29.6889 24.7055 28.5544 25.15 27.3766 25.15H16.5799L16.738 26.476C16.7505 26.5791 16.8002 26.674 16.8779 26.7429C16.9556 26.8118 17.0558 26.8499 17.1596 26.85H27.975C28.3132 26.85 28.6375 26.9843 28.8766 27.2234C29.1157 27.4625 29.25 27.7868 29.25 28.125C29.25 28.4632 29.1157 28.7875 28.8766 29.0266C28.6375 29.2657 28.3132 29.4 27.975 29.4H17.1596C16.4314 29.4001 15.7285 29.1332 15.184 28.6497C14.6395 28.1663 14.2911 27.5 14.205 26.7769L12.437 11.924C12.4245 11.8209 12.3748 11.726 12.2971 11.6571C12.2194 11.5882 12.1192 11.5501 12.0154 11.55H9.275C8.93685 11.55 8.61255 11.4157 8.37344 11.1766C8.13433 10.9375 8 10.6132 8 10.275ZM16.2756 22.6H27.3766C27.9118 22.5999 28.4273 22.3978 28.82 22.0341C29.2127 21.6704 29.4537 21.1719 29.4948 20.6382L29.998 14.1H15.2641L16.2756 22.6Z" fill="white"/>
+              <path d="M20.7501 32.8C20.7501 33.2509 20.571 33.6833 20.2522 34.0021C19.9334 34.3209 19.501 34.5 19.0501 34.5C18.5992 34.5 18.1668 34.3209 17.848 34.0021C17.5292 33.6833 17.3501 33.2509 17.3501 32.8C17.3501 32.3492 17.5292 31.9168 17.848 31.598C18.1668 31.2791 18.5992 31.1 19.0501 31.1C19.501 31.1 19.9334 31.2791 20.2522 31.598C20.571 31.9168 20.7501 32.3492 20.7501 32.8Z" fill="white"/>
+              <path d="M29.2501 32.8C29.2501 33.2509 29.071 33.6833 28.7522 34.0021C28.4334 34.3209 28.001 34.5 27.5501 34.5C27.0992 34.5 26.6668 34.3209 26.348 34.0021C26.0292 33.6833 25.8501 33.2509 25.8501 32.8C25.8501 32.3492 26.0292 31.9168 26.348 31.598C26.6668 31.2791 27.0992 31.1 27.5501 31.1C28.001 31.1 28.4334 31.2791 28.7522 31.598C29.071 31.9168 29.2501 32.3492 29.2501 32.8Z" fill="white"/>
+          </svg>
+      <!-- FILLED Cart Icon -->
+          <svg id="filled-cart-icon" style="display:none;" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.275 9C8.93685 9 8.61255 9.13433 8.37344 9.37344C8.13433 9.61255 8 9.93685 8 10.275C8 10.6132 8.13433 10.9375 8.37344 11.1766C8.61255 11.4157 8.93685 11.55 9.275 11.55H12.0154C12.1192 11.5501 12.2194 11.5882 12.2971 11.6571C12.3748 11.726 12.4245 11.8209 12.437 11.924L14.205 26.7769C14.2911 27.5 14.6395 28.1663 15.184 28.6497C15.7285 29.1332 16.4314 29.4001 17.1596 29.4H27.975C28.3132 29.4 28.6375 29.2657 28.8766 29.0266C29.1157 28.7875 29.25 28.4632 29.25 28.125C29.25 27.7868 29.1157 27.4625 28.8766 27.2234C28.6375 26.9843 28.3132 26.85 27.975 26.85H17.1596C17.0558 26.8499 16.9556 26.8118 16.8779 26.7429C16.8002 26.674 16.7505 26.5791 16.738 26.476L16.5799 25.15H27.3749C28.5533 25.1504 29.6884 24.7059 30.553 23.9052C31.4176 23.1046 31.948 22.0069 32.038 20.832L32.6466 12.9236C32.6602 12.7483 32.6374 12.5722 32.5797 12.4062C32.5219 12.2401 32.4305 12.0878 32.3111 11.9588C32.1916 11.8299 32.0468 11.7269 31.8858 11.6566C31.7247 11.5862 31.5508 11.5499 31.375 11.55H14.9598C14.8576 10.842 14.5037 10.1945 13.9629 9.72614C13.4222 9.25781 12.7308 9.00002 12.0154 9H9.275Z" fill="white"/>
+              <path d="M19.0501 34.5C19.501 34.5 19.9334 34.3209 20.2522 34.0021C20.571 33.6833 20.7501 33.2509 20.7501 32.8C20.7501 32.3492 20.571 31.9168 20.2522 31.598C19.9334 31.2791 19.501 31.1 19.0501 31.1C18.5992 31.1 18.1668 31.2791 17.848 31.598C17.5292 31.9168 17.3501 32.3492 17.3501 32.8C17.3501 33.2509 17.5292 33.6833 17.848 34.0021C18.1668 34.3209 18.5992 34.5 19.0501 34.5Z" fill="white"/>
+              <path d="M29.2501 32.8C29.2501 33.2509 29.071 33.6833 28.7522 34.0021C28.4334 34.3209 28.001 34.5 27.5501 34.5C27.0992 34.5 26.6668 34.3209 26.348 34.0021C26.0292 33.6833 25.8501 33.2509 25.8501 32.8C25.8501 32.3492 26.0292 31.9168 26.348 31.598C26.6668 31.2791 27.0992 31.1 27.5501 31.1C28.001 31.1 28.4334 31.2791 28.7522 31.598C29.071 31.9168 29.2501 32.3492 29.2501 32.8Z" fill="white"/>
+          </svg>
+      <div class="cart-count-bubble" id="cart-count-bubble">
+          <span id="cart-item-count">0</span>
+      </div>
+  </a>
+  <div class="dot">&nbsp;</div>
+</div>
+
+      <div class="icon-container" id="menu-icon-container">
+          <div id="menuToggle">
+              <input id="checkbox" type="checkbox">
+              <label class="toggle" for="checkbox">
+                  <div class="bar bar--top"></div>
+                  <div class="bar bar--middle"></div>
+                  <div class="bar bar--bottom"></div>
+              </label>
+          </div>
+      </div>
+  </nav>
+
+</div>
+```
+
+
+
+
+
+```JavaScript
+<script>
+  // Function to update cart count and visibility of bubble
+  function updateCartCount() {
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        const itemCount = cart.item_count;
+        const bubble = document.getElementById('cart-count-bubble');
+        const itemCountElement = document.getElementById('cart-item-count');
+  
+        const emptyCartIcon = document.getElementById('empty-cart-icon');
+        const filledCartIcon = document.getElementById('filled-cart-icon');
+  
+        itemCountElement.innerText = itemCount;
+  
+        if (itemCount > 0) {
+          bubble.style.display = 'flex';
+          filledCartIcon.style.display = 'block';
+          emptyCartIcon.style.display = 'none';
+        } else {
+          bubble.style.display = 'none';
+          filledCartIcon.style.display = 'none';
+          emptyCartIcon.style.display = 'block';
+        }
+      });
+  }
+  
+  // Initial cart count update
+  updateCartCount();
+  
+  // Function to update the 'selected' state of the icon containers
+  function updateSelectedIcon(selectedId) {
+    // Remove the 'selected' class and dot from all icon containers
+    document.querySelectorAll('.icon-container').forEach(container => {
+      container.classList.remove('selected');
+      container.classList.remove('show-dot');
+    });
+
+    // Add the 'selected' class and dot to the selected icon container
+    document.getElementById(selectedId).classList.add('selected');
+    document.getElementById(selectedId).classList.add('show-dot');
+  }
+
+  // Initial update based on current URL
+  const currentUrl = window.location.href;
+  if (currentUrl.includes('gearheadhats.com') && !currentUrl.includes('/search') && !currentUrl.includes('/cart')) {
+    updateSelectedIcon('home-icon-container');
+  } else {
+    document.getElementById('home-icon-container').classList.remove('selected');
+    if (currentUrl.includes('/search')) {
+      updateSelectedIcon('search-icon-container');
+    } else if (currentUrl.includes('/cart')) {
+      updateSelectedIcon('cart-icon-container');
+    }
+  }
+  
+  // Event listeners for icon clicks
+  document.getElementById('home-icon-container').addEventListener('click', () => updateSelectedIcon('home-icon-container'));
+  
+  const searchBarContainer = document.getElementById('search-bar-container');
+  const searchIcon = document.getElementById('search-icon-container');
+  const emptySearchIcon = document.getElementById('empty-search-icon');
+  const filledSearchIcon = document.getElementById('filled-search-icon');
+  
+  // Toggle search bar and icon when search icon is clicked
+  searchIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    searchBarContainer.classList.toggle('show');
+
+    // Toggle between empty and filled search icons
+    if (searchBarContainer.classList.contains('show')) {
+      emptySearchIcon.style.display = 'none';
+      filledSearchIcon.style.display = 'block';
+    } else {
+      emptySearchIcon.style.display = 'block';
+      filledSearchIcon.style.display = 'none';
+    }
+  });
+
+  // Hide search bar when clicked outside
+  document.addEventListener('click', function () {
+    searchBarContainer.classList.remove('show');
+    
+    // Set the search icon back to its empty state
+    emptySearchIcon.style.display = 'block';
+    filledSearchIcon.style.display = 'none';
+  });
+
+  // Prevent hiding when clicking inside the search bar
+  searchBarContainer.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+  
+  document.getElementById('cart-icon-container').addEventListener('click', () => updateSelectedIcon('cart-icon-container'));
+  
+  // Listen to changes in the browser's history
+  window.addEventListener('popstate', () => {
+    const newUrl = window.location.href;
+    if (newUrl.includes('gearheadhats.com') && !newUrl.includes('/search') && !newUrl.includes('/cart')) {
+      updateSelectedIcon('home-icon-container');
+    }
+  });
+  
+  // Get the search input element
+  const searchInput = document.getElementById('search-input');
+  
+  // Add an event listener for the "keyup" event on the search input
+  searchInput.addEventListener('keyup', function(event) {
+    // Check if the "Enter" key was pressed
+    if (event.key === 'Enter') {
+      // Prevent any default action
+      event.preventDefault();
+      
+      // Get the search query from the input
+      const query = searchInput.value;
+      
+      // Redirect to the Shopify search results page for the query
+      window.location.href = `/search?q=${encodeURIComponent(query)}`;
+    }
+  });
+  
+
+// Get the menu toggle checkbox element
+const menuToggleCheckbox = document.getElementById('checkbox');
+const additionalMenu = document.getElementById('additional-menu');
+
+// Add an event listener to the checkbox to toggle the additional menu
+menuToggleCheckbox.addEventListener('change', () => {
+    if (menuToggleCheckbox.checked) {
+        additionalMenu.classList.add('show');
+    } else {
+        additionalMenu.classList.remove('show');
+    }
+});
+
+</script>
+```
