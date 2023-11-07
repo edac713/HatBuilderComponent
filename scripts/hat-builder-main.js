@@ -98,26 +98,6 @@ $(document).ready(function () {
     variableWidth: true
   }).slick('slickPause');
 
-  // SVG content for play and pause
-  const playSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M13.875 10.65a.75.75 0 0 0 0-1.3l-5.25-3.03a.75.75 0 0 0-1.125.649v6.062a.75.75 0 0 0 1.125.65l5.25-3.032Zm-4.875 1.082v-3.464l3 1.732-3 1.732Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-5.5 7a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z" fill="#332E21"/></svg>`;
-  const pauseSVG = `<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 7.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75Z" fill="#332E21"/><path d="M12.75 8a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0v-4Z" fill="#332E21"/><path fill-rule="evenodd" d="M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14Zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" fill="#332E21"/></svg>`;
-
-  $('#play-pause-icon').on('click', function () {
-    if ($(this).attr('data-state') === 'playing') {
-      $('.hat-builder-patch-carousels > div, .hat-builder-hat-carousels > div').slick('slickPause');
-      $(this).attr('data-state', 'paused');
-      $(this).html(playSVG);
-    } else {
-      if ($('#patches-toggle').hasClass('active')) {
-        $('.hat-builder-patch-carousels > div').slick('slickPlay');
-      } else {
-        $('.hat-builder-hat-carousels > div').slick('slickPlay');
-      }
-      $(this).attr('data-state', 'playing');
-      $(this).html(pauseSVG);
-    }
-  });
-
   $('#patch-collection-list, #hat-collection-list').hide();
 
   $('#patches-toggle, #hats-toggle').on('click', function () {
