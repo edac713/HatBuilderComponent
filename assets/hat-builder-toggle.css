@@ -1,4 +1,5 @@
-.hat-builder-toggle-section {
+/* Toggle Section */
+.toggle-section {
   display: flex;
   position: relative;
   width: 100%;
@@ -9,7 +10,8 @@
   z-index: 0;
 }
 
-.hat-builder-toggle-container {
+/* Toggle Container */
+.toggle-container {
   display: flex;
   position: relative;
   width: 100%;
@@ -21,10 +23,11 @@
   padding: 3px;
 }
 
-.hat-builder-active-background {
+/* New background for active state */
+.active-background {
   display: flex;
   position: absolute;
-  left: 1%;
+  left: 0%;
   width: 50%;
   height: 86%;
   background-color: var(--hat-builder-toggle-active-bg-color);
@@ -33,7 +36,17 @@
   transition: left 0.3s ease;
 }
 
-.hat-builder-toggle-button {
+/* Adjust based on active toggle */
+#patchesToggle.active~.active-background {
+  left: 1%;
+}
+
+#hatsToggle.active~.active-background {
+  left: 49%;
+}
+
+/* Patch & Hat Toggle Buttons */
+.toggle-button {
   flex: 1;
   display: flex;
   align-items: center;
@@ -47,6 +60,6 @@
   z-index: 2;
 }
 
-.hat-builder-toggle-button.active {
+.toggle-button.active {
   color: #161616;
 }
