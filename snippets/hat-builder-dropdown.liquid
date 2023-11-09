@@ -3,36 +3,6 @@
   <!-- Patch Drop-Down Menu, shown when the active tab is 'patches' -->
   <div x-show="activeTab === 'patches'" class="dropdown-content">
     <!-- Insert all your patch collection cards here, just like the original code -->
-    <!-- Example for one card, repeat for others -->
-    <div class="hatBuilderCollectionCard" id="patches-nascar-drivers-teams">
-      <!-- Card content -->
-    </div>
-    <!-- ... other patch cards ... -->
-  </div>
-
-  <!-- Hat Drop-Down Menu, shown when the active tab is 'hats' -->
-  <div x-show="activeTab === 'hats'" class="dropdown-content">
-    <!-- Insert all your hat collection cards here, just like the original code -->
-    <!-- Example for one card, repeat for others -->
-    <div class="hatBuilderCollectionCard" id="richardson">
-      <!-- Card content -->
-    </div>
-    <!-- ... other hat cards ... -->
-  </div>
-</div>
-
-
-
-
-
-
-
-  <!-- Hat Builder Drop-Down -->
-  <div class="hatBuilderDropDown">
-    <!-- Patch Drop-Down Menu -->
-    <div id="patchDropDown" class="hatBuilderDropDown">
-      <!-- Patch Collection List -->
-      <div id="patchCollectionList" class="hatBuilderCollectionList">
         <!-- Collection Card 1: Nascar Drivers & Teams -->
         <div class="hatBuilderCollectionCard" id="patches-nascar-drivers-teams">
           <div class="hatBuilderCardLeft">
@@ -166,12 +136,11 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Hat Drop-Down Menu -->
-    <div id="hatDropDown" style="justify-content: flex-end;" class="hatBuilderDropDown">
-      <!-- Hat Collection List -->
-      <div id="hatCollectionList" class="hatBuilderCollectionList">
+
+<!-- Hat Drop-Down Menu, shown when the active tab is 'hats' -->
+  <div x-show="activeTab === 'hats'" class="dropdown-content">
+    <!-- Insert all your hat collection cards here, just like the original code -->
         <!-- Collection Card 1: Richardson -->
         <div class="hatBuilderCollectionCard" id="richardson">
           <div class="hatBuilderCardLeft">
@@ -228,5 +197,3 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
