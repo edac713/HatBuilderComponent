@@ -1,199 +1,147 @@
 <!-- Alpine.js Hat Builder Drop-Down -->
-<div x-data="{ activeTab: 'patches' }" class="hatBuilderDropDown">
+<div x-data="{ activeTab: 'patches', collections: collectionsData() }" class="hatBuilderDropDown">
+  <!-- Function to provide collection data -->
+  <script>
+    function collectionsData() {
+      return [
+        // Patch collections
+        {
+          id: 'patches-nascar-drivers-teams',
+          title: 'Nascar Drivers & Teams',
+          count: '40 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6130.png?v=1697119002',
+        },
+        {
+          id: 'patches-speedways-racing-series',
+          title: 'Speedways Racing Series',
+          count: '30 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6129.png?v=1697118976',
+        },
+        {
+          id: 'patches-ag-farming',
+          title: 'Ag Farming',
+          count: '25 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6128.png?v=1697119014',
+        },
+        {
+          id: 'patches-beer-liquor',
+          title: 'Beer & Liquor',
+          count: '35 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6127.png?v=1697118965',
+        },
+        {
+          id: 'patches-car-truck-brands',
+          title: 'Car & Truck Brands',
+          count: '50 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6126.png?v=1697118957',
+        },
+        {
+          id: 'patches-racing-brands',
+          title: 'Racing Brands',
+          count: '45 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6125.png?v=1697118994',
+        },
+        {
+          id: 'patches-diesel',
+          title: 'Diesel',
+          count: '20 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6124.png?v=1697119009',
+        },
+        {
+          id: 'patches-drag-racing',
+          title: 'Drag Racing',
+          count: '15 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6123.png?v=1697119004',
+        },
+        {
+          id: 'patches-hunting-fishing-guns',
+          title: 'Hunting, Fishing & Guns',
+          count: '30 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6122.png?v=1697119313',
+        },
+        {
+          id: 'patches-motorcycle-brands',
+          title: 'Motorcycle Brands',
+          count: '25 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6121.png?v=1697119019',
+        },
+        {
+          id: 'patches-national-parks',
+          title: 'National Parks',
+          count: '18 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4193.png?v=1697118982',
+        },
+        {
+          id: 'patches-miscellaneous',
+          title: 'Miscellaneous',
+          count: '18 patches',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6119.png?v=1697118988',
+        },
+
+        // Hat collections
+        {
+          id: 'richardson',
+          title: 'Richardson',
+          count: '20 hats',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4986.png?v=1697118955',
+        },
+        {
+          id: 'imperial',
+          title: 'Imperial',
+          count: '15 hats',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4990.png?v=1697118956',
+        },
+        {
+          id: 'yupoong',
+          title: 'Yupoong',
+          count: '18 hats',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4983.png?v=1697118957',
+        },
+        {
+          id: 'pacific',
+          title: 'Pacific',
+          count: '12 hats',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4982.png?v=1697118947',
+        },
+        {
+          id: 'flexfit',
+          title: 'Flexfit',
+          count: '10 hats',
+          imageUrl: 'https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4993.png?v=1697118954',
+        },
+      ];
+    }
+  </script>
+
   <!-- Patch Drop-Down Menu, shown when the active tab is 'patches' -->
   <div x-show="activeTab === 'patches'" class="dropdown-content">
-    <!-- Insert all your patch collection cards here, just like the original code -->
-        <!-- Collection Card 1: Nascar Drivers & Teams -->
-        <div class="hatBuilderCollectionCard" id="patches-nascar-drivers-teams">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Nascar Drivers & Teams</h3>
-            <p class="hatBuilderCardCount">40 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6130.png?v=1697119002"
-              alt="Nascar Drivers & Teams Image" class="hatBuilderCardImage">
-          </div>
+    <!-- Loop through each patch collection -->
+    <template x-for="collection in collections.filter(c => c.id.includes('patches'))" :key="collection.id">
+      <div class="hatBuilderCollectionCard" :id="collection.id">
+        <div class="hatBuilderCardLeft">
+          <h3 class="hatBuilderCardTitle" x-text="collection.title"></h3>
+          <p class="hatBuilderCardCount" x-text="collection.count"></p>
         </div>
-        <!-- Collection Card 2: Speedways Racing Series -->
-        <div class="hatBuilderCollectionCard" id="patches-speedways-racing-series">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Speedways Racing Series</h3>
-            <p class="hatBuilderCardCount">30 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6129.png?v=1697118976"
-              alt="Speedways Racing Series Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 3: Ag Farming -->
-        <div class="hatBuilderCollectionCard" id="patches-ag-farming">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Ag Farming</h3>
-            <p class="hatBuilderCardCount">25 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6128.png?v=1697119014"
-              alt="Ag Farming Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 4: Beer Liquor -->
-        <div class="hatBuilderCollectionCard" id="patches-beer-liquor">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Beer & Liquor</h3>
-            <p class="hatBuilderCardCount">35 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6127.png?v=1697118965"
-              alt="Beer & Liquor Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 5: Car Truck Brands -->
-        <div class="hatBuilderCollectionCard" id="patches-car-truck-brands">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Car & Truck Brands</h3>
-            <p class="hatBuilderCardCount">50 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6126.png?v=1697118957"
-              alt="Car & Truck Brands Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 6: Racing Brands -->
-        <div class="hatBuilderCollectionCard" id="patches-racing-brands">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Racing Brands</h3>
-            <p class="hatBuilderCardCount">45 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6125.png?v=1697118994"
-              alt="Racing Brands Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 7: Diesel -->
-        <div class="hatBuilderCollectionCard" id="patches-diesel">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Diesel</h3>
-            <p class="hatBuilderCardCount">20 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6124.png?v=1697119009"
-              alt="Diesel Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 8: Drag Racing -->
-        <div class="hatBuilderCollectionCard" id="patches-drag-racing">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Drag Racing</h3>
-            <p class="hatBuilderCardCount">15 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6123.png?v=1697119004"
-              alt="Drag Racing Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 9: Hunting Fishing Guns -->
-        <div class="hatBuilderCollectionCard" id="patches-hunting-fishing-guns">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Hunting, Fishing & Guns</h3>
-            <p class="hatBuilderCardCount">30 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6122.png?v=1697119313"
-              alt="Hunting, Fishing & Guns Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 10: Motorcycle Brands -->
-        <div class="hatBuilderCollectionCard" id="patches-motorcycle-brands">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Motorcycle Brands</h3>
-            <p class="hatBuilderCardCount">25 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6121.png?v=1697119019"
-              alt="Motorcycle Brands Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 11: National Parks -->
-        <div class="hatBuilderCollectionCard" id="patches-national-parks">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">National Parks</h3>
-            <p class="hatBuilderCardCount">18 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4193.png?v=1697118982"
-              alt="National Parks Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 12: Miscellaneous -->
-        <div class="hatBuilderCollectionCard" id="patches-miscellaneous">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Miscellaneous</h3>
-            <p class="hatBuilderCardCount">18 patches</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_6119.png?v=1697118988"
-              alt="Miscellaneous Image" class="hatBuilderCardImage">
-          </div>
+        <div class="hatBuilderCardRight">
+          <img :src="collection.imageUrl" :alt="collection.title + ' Image'" class="hatBuilderCardImage" loading="lazy">
         </div>
       </div>
+    </template>
+  </div>
 
-<!-- Hat Drop-Down Menu, shown when the active tab is 'hats' -->
+  <!-- Hat Drop-Down Menu, shown when the active tab is 'hats' -->
   <div x-show="activeTab === 'hats'" class="dropdown-content">
-    <!-- Insert all your hat collection cards here, just like the original code -->
-        <!-- Collection Card 1: Richardson -->
-        <div class="hatBuilderCollectionCard" id="richardson">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Richardson</h3>
-            <p class="hatBuilderCardCount">20 hats</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4986.png?v=1697118955"
-              alt="Richardson Image" class="hatBuilderCardImage">
-          </div>
+    <!-- Loop through each hat collection -->
+    <template x-for="collection in collections.filter(c => c.id.includes('hats'))" :key="collection.id">
+      <div class="hatBuilderCollectionCard" :id="collection.id">
+        <div class="hatBuilderCardLeft">
+          <h3 class="hatBuilderCardTitle" x-text="collection.title"></h3>
+          <p class="hatBuilderCardCount" x-text="collection.count"></p>
         </div>
-        <!-- Collection Card 2: Imperial -->
-        <div class="hatBuilderCollectionCard" id="imperial">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Imperial</h3>
-            <p class="hatBuilderCardCount">15 hats</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4990.png?v=1697118956"
-              alt="Imperial Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 3: Yupoong -->
-        <div class="hatBuilderCollectionCard" id="yupoong">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Yupoong</h3>
-            <p class="hatBuilderCardCount">18 hats</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4983.png?v=1697118957"
-              alt="Yupoong Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 4: Pacific -->
-        <div class="hatBuilderCollectionCard" id="pacific">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Pacific</h3>
-            <p class="hatBuilderCardCount">12 hats</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4982.png?v=1697118947"
-              alt="Pacific Image" class="hatBuilderCardImage">
-          </div>
-        </div>
-        <!-- Collection Card 5: Flexfit -->
-        <div class="hatBuilderCollectionCard" id="flexfit">
-          <div class="hatBuilderCardLeft">
-            <h3 class="hatBuilderCardTitle">Flexfit</h3>
-            <p class="hatBuilderCardCount">10 hats</p>
-          </div>
-          <div class="hatBuilderCardRight">
-            <img src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/IMG_4993.png?v=1697118954"
-              alt="Flexfit Image" class="hatBuilderCardImage">
-          </div>
+        <div class="hatBuilderCardRight">
+          <img :src="collection.imageUrl" :alt="collection.title + ' Image'" class="hatBuilderCardImage" loading="lazy">
         </div>
       </div>
+    </template>
+  </div>
 </div>
