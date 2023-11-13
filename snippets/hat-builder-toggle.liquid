@@ -1,28 +1,36 @@
-<!-- Tabs to switch between patches and hats -->
-<div class="toggle-section">
-    <div class="toggle-container">
-      <!-- Existing Tabs -->
-      <div class="toggle-button active" id="patchesToggle">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/D238D762-E827-4BE8-BF0F-1BEB9A99CDA9.png?v=1696605239"
-          alt="Patch Icon"
-          width="20"
-          height="20"
-          style="margin-right: 8px;"
-        >Patches
-        {% render 'icon-chevron' %}
-      </div>
-      <div class="toggle-button" id="hatsToggle">
-        <img
-          src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/34FBE93F-4A92-4E89-A068-7CBC5D1F4ECC.png?v=1696605239"
-          alt="Hat Icon"
-          width="26"
-          height="26"
-          style="margin-right: 8px;"
-        >Hats
-        {% render 'icon-chevron' %}
-      </div>
-    <!-- Active state background -->
-    <div class="active-background"> </div>
+<!-- Alpine.js Toggle Section -->
+<div x-data="{ activeTab: 'patches' }" class="toggle-section">
+  <div class="toggle-container">
+    <!-- Patches Toggle Button -->
+    <div :class="{ 'toggle-button': true, 'active': activeTab === 'patches' }"
+         @click="activeTab = 'patches'"
+         :style="{ '--active-background-left': activeTab === 'patches' ? '1%' : '49%' }">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/D238D762-E827-4BE8-BF0F-1BEB9A99CDA9.png?v=1696605239"
+        alt="Patch Icon"
+        width="20"
+        height="20"
+        style="margin-right: 8px;"
+      >Patches
+      {% render 'icon-chevron' %}
+    </div>
+    <!-- Hats Toggle Button -->
+    <div :class="{ 'toggle-button': true, 'active': activeTab === 'hats' }"
+         @click="activeTab = 'hats'"
+         :style="{ '--active-background-left': activeTab === 'hats' ? '49%' : '1%' }">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0569/9295/6486/files/34FBE93F-4A92-4E89-A068-7CBC5D1F4ECC.png?v=1696605239"
+        alt="Hat Icon"
+        width="26"
+        height="26"
+        style="margin-right: 8px;"
+      >Hats
+      {% render 'icon-chevron' %}
+    </div>
   </div>
+  <!-- Active state background -->
+  <div class="active-background" :style="{ left: activeTab === 'patches' ? '0%' : '50%' }"> </div>
+
+  <!-- Include the Dropdown Content here -->
+  {% render 'hat-builder-dropdown' %}
 </div>
