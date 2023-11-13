@@ -8,6 +8,7 @@
   --hat-builder-get-started-btn-text-color: #F1F0EE;
   --zindex-hat-builder: 10;
   --zindex-button-container: 5;
+  --purple: rgba(171,104,255);
 }
 
 .hat-builder-container {
