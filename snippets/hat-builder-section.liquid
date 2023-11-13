@@ -15,7 +15,7 @@
 {{ 'hat-builder-footer.css' | asset_url | stylesheet_tag }}
 
 <!-- Include JavaScript File -->
-<script src="{{ 'hat-builder-main.js' | asset_url }}" async></script>
+{{ 'hat-builder-main.js' | asset_url | script_tag }}
 
 <!-- HTML Structure -->
 <div class="hat-builder-container">
@@ -25,11 +25,11 @@
   <!-- Render Toggle Buttons for Patches and Hats -->
   {% render 'hat-builder-toggle' %}
 
-  <!-- Render Hat Builder Collection Label -->
-  {% render 'hat-builder-collection-label' %}
-
   <!-- Render Drop-down Menus for Patches and Hats -->
   {% render 'hat-builder-dropdown' %}
+  
+  <!-- Render Hat Builder Collection Label -->
+  {% render 'hat-builder-collection-label' %}
 
   <!-- Render Carousel Section -->
   {% render 'hat-builder-carousel' %}
