@@ -21,118 +21,55 @@ const collectionToCarouselMap = {
     "flexfit": "hats-flexfit-carousel"
 };
 
-let isDropDownOpen = false;
-let activeToggle = '';
 let displayedPatchCarousel = 'patches-all-carousel'; // ID of the "all patches" carousel
 let displayedHatCarousel = 'hats-all-carousel'; // ID of the "all hats" carousel
 
-function handleToggleClick() {
-    const clickedToggle = $(this).attr('id');
-    let targetCollectionList;
-    if (clickedToggle === 'patchesToggle') {
-        targetCollectionList = clickedToggle.replace('esToggle', 'CollectionList');
-        // Pause the hats carousel and play the patches carousel
-        $('#' + displayedHatCarousel).slick('slickPause');
-        $('#' + displayedPatchCarousel).slick('slickPlay');
-    } else if (clickedToggle === 'hatsToggle') {
-        targetCollectionList = clickedToggle.replace('sToggle', 'CollectionList');
-        // Pause the patches carousel and play the hats carousel
-        $('#' + displayedPatchCarousel).slick('slickPause');
-        $('#' + displayedHatCarousel).slick('slickPlay');
-    }
-    $('#patchCollectionList, #hatCollectionList').hide();
-    if (isDropDownOpen && clickedToggle === activeToggle) {
-        isDropDownOpen = false;
-    } else {
-        $('#' + targetCollectionList).show();
-        isDropDownOpen = true;
-        activeToggle = clickedToggle;
-    }
-
-    // Remove the active class from both toggle buttons
-    $('#patchesToggle, #hatsToggle').removeClass('active');
-    // Add the active class to the clicked toggle button
-    $('#' + clickedToggle).addClass('active');
-}
-
-function updateHatBuilderHeader() {
-    const isPatchesActive = $('#patchestoggle').hasClass('active');
-    const label = isPatchesActive ? "All Patches" : "All Hats";
-    $('.hat-builder-collection-label').text(label);
-}
-
-
 $(document).ready(function () {
-    $(".hatBuilderCollectionCard").on("click", function (event) {
-        // Get the id of the clicked collection card
+    $(".hatBuilderCollectionCard").on("click", function () {
+        // Carousel switching logic can remain if this isn't being handled by Alpine.js
         const clickedCollection = $(this).attr('id');
-
-        // Get the associated carousel ID
         const targetCarousel = collectionToCarouselMap[clickedCollection];
-
-        // Determine the product type of the clicked collection card
         const productType = clickedCollection.includes('patches') ? 'patches' : 'hats';
 
-        // Hide the currently displayed carousel of the same product type
-        if (productType === 'patches') {
-            $('#' + displayedPatchCarousel).hide();
-            displayedPatchCarousel = targetCarousel;
-        } else if (productType === 'hats') {
-            $('#' + displayedHatCarousel).hide();
-            displayedHatCarousel = targetCarousel;
-        }
-
-        // Show the carousel associated with the clicked collection card
+        $('#' + displayedPatchCarousel).hide();
+        $('#' + displayedHatCarousel).hide();
+        
+        displayedPatchCarousel = productType === 'patches' ? targetCarousel : displayedPatchCarousel;
+        displayedHatCarousel = productType === 'hats' ? targetCarousel : displayedHatCarousel;
+        
         $('#' + targetCarousel).show();
-
-        // Close the dropdown menu
-        isDropDownOpen = false;
-        $('#patchCollectionList, #hatCollectionList').hide();
-
-        // Remove the active class from the toggle button that doesn't match the product type
-        if (productType === 'patches') {
-            $('#hatsToggle').removeClass('active');
-        } else if (productType === 'hats') {
-            $('#patchesToggle').removeClass('active');
-        }
-
-        // Update the hat-builder-collection-label text
-        let label = clickedCollection.replace('patches-', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        $('.hat-builder-collection-label').text(label);
     });
 
-    $(".patch-carousels > div").slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        centerMode: true,
-        arrows: false,
-        adaptiveHeight: false,
-        variableWidth: true
-    });
 
-    $(".hat-carousels > div").slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: false,
-        autoplaySpeed: 2000,
-        centerMode: true,
-        arrows: false,
-        adaptiveHeight: false,
-        variableWidth: true
-    }).slick('slickPause');
+  $('.patch-carousels > div').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+    arrows: false,
+    adaptiveHeight: false,
+    variableWidth: true,
+  });
 
-    $('#patchCollectionList, #hatCollectionList').hide();
-
-    $('#patchesToggle, #hatsToggle').on('click', handleToggleClick);
+  $('.hat-carousels > div')
+    .slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      autoplaySpeed: 2000,
+      centerMode: true,
+      arrows: false,
+      adaptiveHeight: false,
+      variableWidth: true,
+    })
+    .slick('slickPause');
 
     $('#scrollButton').on('click', function () {
+        // Smooth scroll functionality can remain if it doesn't interfere with Alpine.js
         const targetScroll = $(".hat-builder-container").offset().top;
-        $('html, body').animate({
-            scrollTop: targetScroll
-        }, 500);
+        $('html, body').animate({ scrollTop: targetScroll }, 500);
     });
 });
