@@ -27,13 +27,15 @@
 .active-background {
     display: flex;
     position: absolute;
-    left: var(--active-background-left, 0%); /* Default to 0% if variable not set */
+    left: var(--active-background-left); /* Controlled by Alpine.js */
     width: 50%;
-    height: 86%;
+    height: 100%;
     background-color: var(--hat-builder-toggle-active-bg-color);
     border-radius: 13px;
-    border: solid #DBDAD6 0.75px;
+    border: solid #DBDAD6 2px;
     transition: left 0.2s ease;
+    align-items: center; /* Changed from 'align-self' for consistency */
+    z-index: 1; /* Ensure it's behind the toggle buttons */
 }
 
 /* Patch & Hat Toggle Buttons */
@@ -52,26 +54,18 @@
 }
 
 .toggle-button.active {
-    color: #161616;
-    /* Style for when button is active */
-    --active-background-left: 1%; /* For the left toggle, adjust as needed */
-}
-
-.toggle-button.active + .active-background {
-    /* This will move the active background behind the active button */
-    left: var(--active-background-left);
+    color: #161616; /* Maintain text color for active button if needed */
 }
 
 /* Chevron Styling */
 .icon-chevron {
-    /* Other styles... */
     margin-left: 5px;
     transition: transform 0.5s; /* Smooth transition for rotation */
 }
 
 /* Rotate chevron when toggle is active */
 .toggle-button.active .icon-chevron {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Chevron rotates on active button */
 }
 
-/* Keyframes for the rotation are not needed unless you want a more complex animation */
+/* No keyframes are needed unless a more complex animation is desired */
