@@ -1,6 +1,6 @@
 # Hat Builder Component Overview
 
-## Introduction
+## Introduction HELLO!
 This repository contains all the necessary files for the Hat Builder component, a feature-rich section that allows users to customize hats with various patches. The component is designed to be modular, easy to manage, and scalable.
 
 ## Component Structure
