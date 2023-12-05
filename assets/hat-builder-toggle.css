@@ -3,10 +3,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    height: 55px;
-    margin-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 5vw;
     z-index: 0;
 }
 
@@ -16,23 +13,21 @@
     position: relative;
     width: 100%;
     height: 55px;
-    background: var(--hat-builder-toggle-container-bg-color);
+    background: var(--light-grey-3);
     border-radius: 16px;
     justify-content: center;
     align-items: center;
-    padding: 3px;
 }
 
 /* New background for active state */
 .active-background {
     display: flex;
     position: absolute;
-    left: var(--active-background-left); /* Controlled by Alpine.js */
     width: 50%;
     height: 100%;
-    background-color: var(--hat-builder-toggle-active-bg-color);
+    background-color: var(--white);
     border-radius: 13px;
-    border: solid #DBDAD6 2px;
+    border: solid var(--light-grey-3) 0.25em;
     transition: left 0.2s ease;
     align-items: center; /* Changed from 'align-self' for consistency */
     z-index: 1; /* Ensure it's behind the toggle buttons */
@@ -50,22 +45,10 @@
     background: transparent;
     color: #161616;
     position: relative;
+    grid-column-gap: 0.5rem;
     z-index: 2;
 }
 
 .toggle-button.active {
     color: #161616; /* Maintain text color for active button if needed */
 }
-
-/* Chevron Styling */
-.icon-chevron {
-    margin-left: 5px;
-    transition: transform 0.5s; /* Smooth transition for rotation */
-}
-
-/* Rotate chevron when toggle is active */
-.toggle-button.active .icon-chevron {
-    transform: rotate(180deg); /* Chevron rotates on active button */
-}
-
-/* No keyframes are needed unless a more complex animation is desired */
