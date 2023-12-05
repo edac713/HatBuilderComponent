@@ -1,3 +1,5 @@
+/* Hat Builder Container */
+
 .gh-page-padding {
   padding: 5vw;
 }
@@ -10,4 +12,215 @@
   margin-top: 0px;
   border-radius: 2em;
   z-index: var(--zindex-hat-builder);
+}
+
+/* Header */
+
+.hat-builder-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.hat-builder-heading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--black);
+}
+
+/* Collections */
+
+.hatBuilderDropDown {
+  position: absolute;
+  padding-top: 1rem;
+  width: 100%;
+  z-index: 15;
+  display: none;
+}
+
+.hatBuilderCollectionList {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: fit-content;
+  background-color: #fffffff0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  border-radius: 1em;
+  z-index: 15;
+}
+
+.hatBuilderCollectionCard {
+  font-family: sans-serif;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  height: 125px;
+  justify-content: left;
+  flex-direction: row-reverse;
+  grid-column-gap: 2.5rem;
+}
+
+.hatBuilderCardImage {
+  display: flex;
+  position: relative;
+  width: 85px;
+  height: auto;
+}
+
+/* Toggle */
+
+.toggle-section {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 55px;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    z-index: 0;
+}
+
+.toggle-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 55px;
+    background: var(--hat-builder-toggle-container-bg-color);
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+.active-background {
+    display: flex;
+    position: absolute;
+    left: var(--active-background-left);
+    width: 50%;
+    height: 100%;
+    background-color: var(--hat-builder-toggle-active-bg-color);
+    border-radius: 13px;
+    border: solid #DBDAD6 2px;
+    transition: left 0.2s ease;
+    align-items: center;
+    z-index: 1;
+}
+
+.toggle-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    color: #161616;
+    position: relative;
+    z-index: 2;
+}
+
+.toggle-button.active {
+    color: #161616;
+}
+
+.icon-chevron {
+    margin-left: 5px;
+    transition: transform 0.5s;
+}
+
+.toggle-button.active .icon-chevron {
+    transform: rotate(180deg);
+}
+
+/* Carousel */
+
+.hat-builder-carousel-container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 206px;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  margin-top: 10px;
+}
+
+.patch-carousels>div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  max-height: 300px;
+  opacity: 1;
+}
+
+.patch-carousels>div img {
+  max-width: 12rem;
+  max-height: 12rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.patch-carousels>div .slick-slide {
+  margin: 0 50px;
+}
+
+.hat-carousels>div {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  max-height: 300px;
+  opacity: 1;
+}
+
+.hat-carousels>div img {
+  max-width: 21rem;
+  max-height: 21rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.hat-carousels>div .slick-slide {
+  margin: 0 50px;
+}
+
+/* Footer */
+
+.hat-builder-footer-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  overflow: visible;
+}
+
+.hat-builder-footer-btn {
+  display: flex;
+  position: relative;
+  padding: 13px 40px;
+  background: #FFFFFF;
+  font-size: 17px;
+  font-weight: 500;
+  color: #161616;
+  border: 2px solid #DBDAD6;
+  border-radius: 17px; 
+  transition: all .3s ease-in-out;
+  align-items: center;
+  grid-column-gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
